@@ -2,10 +2,12 @@ package com.tuanad.socfi;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -31,6 +33,15 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void clickToLogin(View view) {
+        if (isNullField(edtUsername)) {
+            Toast.makeText(this, "Username cannot be empty", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (isNullField(edtPassword)) {
+            Toast.makeText(this, "Password cannot be empty", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         String URL = "http://172.16.1.36:8080/socfi/public/api/login";
         LinkedHashMap<String, String> obj =  new LinkedHashMap<>();
@@ -110,8 +121,14 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void clickToSignUp(View view) {
+        Intent intent = new Intent(this, SignUpActivity.class);
+        startActivity(intent);
     }
 
     public void clickToResetPassword(View view) {
+    }
+
+    public boolean isNullField(EditText editText) {
+        return editText.getText().toString().matches("");
     }
 }
