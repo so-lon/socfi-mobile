@@ -1,7 +1,7 @@
 {
-  "name": "argon-react-native",
+  "name": "socfi-mobile",
   "version": "1.4.0",
-  "description": "Argon React Native, based on Argon Design System. Coded by Creative Tim",
+  "description": "Socfi Mobile Version",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/creativetimofficial/argon-react-native.git"
+    "url": "git+https://github.com/so-lon/socfi-mobile"
   },
   "dependencies": {
     "@react-native-community/masked-view": "0.1.5",
