@@ -3,7 +3,7 @@ import { withNavigation } from '@react-navigation/compat';
 import PropTypes from 'prop-types';
 import { StyleSheet, Dimensions, Image, TouchableWithoutFeedback } from 'react-native';
 import { Block, Text, theme } from 'galio-framework';
-
+import StarRating from 'react-native-star-rating';
 import { argonTheme } from '../constants';
 
 
@@ -29,9 +29,19 @@ class Card extends React.Component {
           </Block>
         </TouchableWithoutFeedback>
         <TouchableWithoutFeedback onPress={() => navigation.navigate('Pro')}>
-          <Block flex space="between" style={styles.cardDescription}>
-            <Text size={14} style={styles.cardTitle}>{item.title}</Text>
-            <Text size={12} muted={!ctaColor} color={ctaColor || argonTheme.COLORS.ACTIVE} bold>{item.cta}</Text>
+          <Block left flex space="between" style={styles.cardDescription}>
+            <Text bold size={14} style={styles.cardTitle}>{item.title}</Text>
+            <Text size={12} style={styles.cardTitle}>Địa chỉ: Phan Thúc Duyện, Q.Tân Bình</Text>
+            <Text size={12} style={styles.cardTitle}>Giá: 200k ~ 450k</Text>
+            <StarRating
+              disabled={true}
+              maxStars={5}
+              rating={5}
+              starSize={16}
+              fullStarColor={argonTheme.COLORS.PRIMARY}
+              
+            />
+            {/* <Text size={12} muted={!ctaColor} color={ctaColor || argonTheme.COLORS.ACTIVE} bold>{item.cta}</Text> */}
           </Block>
         </TouchableWithoutFeedback>
       </Block>
@@ -49,8 +59,10 @@ Card.propTypes = {
 
 const styles = StyleSheet.create({
   card: {
+    width: 200,
     backgroundColor: theme.COLORS.WHITE,
     marginVertical: theme.SIZES.BASE,
+    marginRight: theme.SIZES.BASE,
     borderWidth: 0,
     minHeight: 114,
     marginBottom: 16
@@ -84,7 +96,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 0
   },
   fullImage: {
-    height: 215
+    height: 130
   },
   shadow: {
     shadowColor: theme.COLORS.BLACK,
