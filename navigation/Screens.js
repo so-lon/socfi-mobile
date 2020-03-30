@@ -148,7 +148,9 @@ function HomeStack(props) {
             <Header
               title="Home"
               search
-              // options
+              options
+              optionLeft="SAN BONG"
+              optionRight="TIN TUC"
               navigation={navigation}
               scene={scene}
             />
