@@ -15,6 +15,7 @@ import Profile from "../screens/Profile";
 import Register from "../screens/Register";
 import Elements from "../screens/Elements";
 import Articles from "../screens/Articles";
+import Stadium from '../screens/Stadium';
 // drawer
 import CustomDrawerContent from "./Menu";
 
@@ -41,7 +42,7 @@ function ElementsStack(props) {
           cardStyle: { backgroundColor: "#F8F9FE" }
         }}
       />
-            <Stack.Screen
+      <Stack.Screen
         name="Pro"
         component={Pro}
         options={{
@@ -75,7 +76,7 @@ function ArticlesStack(props) {
           cardStyle: { backgroundColor: "#F8F9FE" }
         }}
       />
-            <Stack.Screen
+      <Stack.Screen
         name="Pro"
         component={Pro}
         options={{
@@ -116,7 +117,7 @@ function ProfileStack(props) {
           headerTransparent: true
         }}
       />
-            <Stack.Screen
+      <Stack.Screen
         name="Pro"
         component={Pro}
         options={{
@@ -159,20 +160,18 @@ function HomeStack(props) {
         }}
       />
       <Stack.Screen
-        name="Pro"
-        component={Pro}
+        name="Stadium"
+        component={Stadium}
         options={{
           header: ({ navigation, scene }) => (
             <Header
-              title=""
+              title="CHI TIẾT SÂN BÓNG"
               back
-              white
-              transparent
               navigation={navigation}
               scene={scene}
             />
           ),
-          headerTransparent: true
+          cardStyle: { backgroundColor: "#F8F9FE" }
         }}
       />
     </Stack.Navigator>

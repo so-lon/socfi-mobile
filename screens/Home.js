@@ -15,7 +15,10 @@ class Home extends React.Component {
     dataSource: [
       { 'url': 'http://placeimg.com/640/480/any' },
       { 'url': 'http://placeimg.com/640/481/any' },
-      { 'url': 'http://placeimg.com/640/482/any' }
+      { 'url': 'http://placeimg.com/640/482/any' },
+      { 'url': 'http://placeimg.com/640/483/any' },
+      { 'url': 'http://placeimg.com/640/484/any' },
+      { 'url': 'http://placeimg.com/640/485/any' }
     ]
   }
 
@@ -25,7 +28,7 @@ class Home extends React.Component {
         this.setState({
           position: this.state.position === this.state.dataSource.length ? 0 : this.state.position + 1
         });
-      }, 2000)
+      }, 3000)
     });
   }
 
@@ -58,7 +61,7 @@ class Home extends React.Component {
               </Text>
             </Block>
             <Block right style={styles.right}>
-              <Text>Xem tat ca</Text>
+              <Text>Xem thêm...</Text>
             </Block>
           </Block>
           <ScrollView showsHorizontalScrollIndicator={false} horizontal>
@@ -89,7 +92,7 @@ class Home extends React.Component {
               </Text>
             </Block>
             <Block right style={styles.right}>
-              <Text>Xem tat ca</Text>
+              <Text>Xem thêm...</Text>
             </Block>
           </Block>
           <ScrollView horizontal>
@@ -114,7 +117,7 @@ class Home extends React.Component {
               </Text>
             </Block>
             <Block right style={styles.right}>
-              <Text>Xem tat ca</Text>
+              <Text>Xem thêm...</Text>
             </Block>
           </Block>
           <ScrollView>
@@ -151,7 +154,7 @@ const styles = StyleSheet.create({
     height: theme.SIZES.BASE * 4.125,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-evenly',
+    justifyContent: 'space-between',
     backgroundColor: theme.COLORS.WHITE,
     paddingVertical: theme.SIZES.BASE,
   },
