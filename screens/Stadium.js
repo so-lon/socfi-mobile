@@ -37,6 +37,7 @@ class Stadium extends React.Component {
   // }
 
   renderArticles = () => {
+    const {navigation} = this.props;
     return (
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -139,6 +140,7 @@ class Stadium extends React.Component {
   }
 
   render() {
+    const { navigation } = this.props;
     return (
       <Block flex center style={styles.home}>
         {this.renderArticles()}

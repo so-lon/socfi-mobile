@@ -182,8 +182,8 @@ export default function OnboardingStack(props) {
   return (
     <Stack.Navigator mode="card" headerMode="none">
       <Stack.Screen
-        name="Onboarding"
-        component={Onboarding}
+        name="Login"
+        component={Register}
         option={{
           headerTransparent: true
         }}
@@ -226,7 +226,7 @@ function AppStack(props) {
     >
       <Drawer.Screen name="Home" component={HomeStack} />
       <Drawer.Screen name="Profile" component={ProfileStack} />
-      <Drawer.Screen name="Account" component={Register} />
+      {/* <Drawer.Screen name="Account" component={Register} /> */}
       <Drawer.Screen name="Elements" component={ElementsStack} />
       <Drawer.Screen name="Articles" component={ArticlesStack} />
     </Drawer.Navigator>
