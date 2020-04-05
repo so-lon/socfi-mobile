@@ -68,7 +68,7 @@ class Stadium extends React.Component {
           <Block style={{ marginVertical: 10, borderColor: "rgba(0,0,0,0.2)", width: '100%', borderWidth: StyleSheet.hairlineWidth }} />
 
           <Block row center style={styles.options}>
-            <Button shadowless style={styles.tab} onPress={() => navigation.navigate('Pro')}>
+            <Button shadowless style={styles.tab} onPress={() => navigation.navigate('Booking')}>
               <Block row middle>
                 <Icon name="date-range" family="material" style={{ paddingRight: 8 }} color={argonTheme.COLORS.PRIMARY} />
                 <Text size={16} style={styles.tabTitle}>{'ĐẶT SÂN'}</Text>

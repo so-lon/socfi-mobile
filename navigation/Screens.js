@@ -16,6 +16,7 @@ import Register from "../screens/Register";
 import Elements from "../screens/Elements";
 import Articles from "../screens/Articles";
 import Stadium from '../screens/Stadium';
+import Booking from '../screens/Booking';
 // drawer
 import CustomDrawerContent from "./Menu";
 
@@ -166,6 +167,21 @@ function HomeStack(props) {
           header: ({ navigation, scene }) => (
             <Header
               title="CHI TIẾT SÂN BÓNG"
+              back
+              navigation={navigation}
+              scene={scene}
+            />
+          ),
+          cardStyle: { backgroundColor: "#F8F9FE" }
+        }}
+      />
+      <Stack.Screen
+        name="Booking"
+        component={Booking}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              title="ĐẶT SÂN"
               back
               navigation={navigation}
               scene={scene}

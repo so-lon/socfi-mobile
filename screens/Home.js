@@ -59,6 +59,7 @@ class Home extends React.Component {
               >
                 SÂN BÓNG NỔI BẬT
               </Text>
+              {/* <Text>Xem thêm...</Text> */}
             </Block>
             <Block right style={styles.right}>
               <Text>Xem thêm...</Text>

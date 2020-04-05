@@ -9,7 +9,7 @@ import { argonTheme } from '../constants';
 
 class DropDown extends React.Component {
   state = {
-    value: 1,
+    value: this.props.value,
   }
 
   handleOnSelect = (index, value) => {
@@ -20,7 +20,7 @@ class DropDown extends React.Component {
   }
 
   render() {
-    const { onSelect, iconName, iconFamily, iconSize, iconColor, color, textStyle, style, ...props } = this.props;
+    const { value, onSelect, iconName, iconFamily, iconSize, iconColor, color, textStyle, style, ...props } = this.props;
 
     const modalStyles = [
       styles.qty,
@@ -60,7 +60,7 @@ DropDown.propTypes = {
 
 const styles = StyleSheet.create({
   qty: {
-    width: 100,
+    width: 200,
     backgroundColor: argonTheme.COLORS.DEFAULT,
     paddingHorizontal: 16,
     paddingTop: 10,
@@ -73,12 +73,13 @@ const styles = StyleSheet.create({
   },
   text: {
     color: argonTheme.COLORS.WHITE,
-    fontWeight: '600'
+    fontWeight: '700'
   },
   dropdown: {
     marginTop: 8,
     marginLeft: -16,
-    width: 100,
+    width: 200,
+    height: 255
   },
 });
 
