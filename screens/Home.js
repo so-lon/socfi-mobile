@@ -5,6 +5,7 @@ import Slideshow from 'react-native-image-slider-show';
 import { Card } from '../components';
 import articles from '../constants/articles';
 import { argonTheme, tabs, Images } from "../constants/";
+import { TouchableOpacity } from 'react-native-gesture-handler';
 const { width } = Dimensions.get('screen');
 const { height } = Dimensions.get('screen');
 
@@ -118,7 +119,9 @@ class Home extends React.Component {
               </Text>
             </Block>
             <Block right style={styles.right}>
-              <Text color={argonTheme.COLORS.PRIMARY} italic>Xem thêm...</Text>
+              <TouchableOpacity onPress={() => this.props.navigation.navigate('NearbyStadium')}>
+                <Text color={argonTheme.COLORS.PRIMARY} italic>Xem thêm...</Text>
+              </TouchableOpacity>
             </Block>
           </Block>
           <ScrollView>

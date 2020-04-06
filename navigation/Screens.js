@@ -19,6 +19,7 @@ import Stadium from '../screens/Stadium';
 import Booking from '../screens/Booking';
 import BookingHistory from '../screens/BookingHistory';
 import BookingDetail from '../screens/BookingDetail';
+import NearbyStadium from '../screens/NearbyStadium';
 // drawer
 import CustomDrawerContent from "./Menu";
 
@@ -184,6 +185,21 @@ function HomeStack(props) {
           header: ({ navigation, scene }) => (
             <Header
               title="ĐẶT SÂN"
+              back
+              navigation={navigation}
+              scene={scene}
+            />
+          ),
+          cardStyle: { backgroundColor: "#F8F9FE" }
+        }}
+      />
+      <Stack.Screen
+        name="NearbyStadium"
+        component={NearbyStadium}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              title="TÌM XUNG QUANH"
               back
               navigation={navigation}
               scene={scene}
