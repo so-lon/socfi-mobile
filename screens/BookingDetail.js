@@ -4,11 +4,11 @@ import { Block, theme, Text } from 'galio-framework';
 import Slideshow from 'react-native-image-slider-show';
 import { Book } from '../components';
 import articles from '../constants/articles';
-import { argonTheme, tabs, Images } from "../constants/";
+import { argonTheme, tabs, Images } from "../constants";
 const { width } = Dimensions.get('screen');
 const { height } = Dimensions.get('screen');
 
-class BookingHistory extends React.Component {
+class BookingDetail extends React.Component {
   state = {
     position: 0,
     interval: null,
@@ -131,4 +131,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default BookingHistory;
+export default BookingDetail;

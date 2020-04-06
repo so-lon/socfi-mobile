@@ -62,7 +62,7 @@ class Home extends React.Component {
               {/* <Text>Xem thêm...</Text> */}
             </Block>
             <Block right style={styles.right}>
-              <Text>Xem thêm...</Text>
+              <Text color={argonTheme.COLORS.PRIMARY} italic>Xem thêm...</Text>
             </Block>
           </Block>
           <ScrollView showsHorizontalScrollIndicator={false} horizontal>
@@ -93,7 +93,7 @@ class Home extends React.Component {
               </Text>
             </Block>
             <Block right style={styles.right}>
-              <Text>Xem thêm...</Text>
+              <Text color={argonTheme.COLORS.PRIMARY} italic>Xem thêm...</Text>
             </Block>
           </Block>
           <ScrollView horizontal>
@@ -118,7 +118,7 @@ class Home extends React.Component {
               </Text>
             </Block>
             <Block right style={styles.right}>
-              <Text>Xem thêm...</Text>
+              <Text color={argonTheme.COLORS.PRIMARY} italic>Xem thêm...</Text>
             </Block>
           </Block>
           <ScrollView>

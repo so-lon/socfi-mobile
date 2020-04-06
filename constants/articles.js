@@ -22,8 +22,18 @@ export default [
   },
   {
     title: 'SÂN SCSC CHẢO LỬA',
-    image: 'https://images.unsplash.com/photo-1482686115713-0fbcaced6e28?fit=crop&w=1947&q=80',
+    image: 'https://sporta.s3-ap-southeast-1.amazonaws.com/uploads/production/image/image/44/sana_t.jpg?X-Amz-Expires=600&X-Amz-Date=20200406T081226Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIQW3XISBSHKJGJBQ%2F20200406%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=ef66c639c7a888c5de9797b9f429e519529ea9445f6336e579e60abae8fe5df8',
+    address: 'Phan Thúc Duyện, Q.Tân Bình',
+    dayPrice: '150k - 200k',
+    nightPrice: '300k - 350k',
     cta: 'View article', 
-    horizontal: true
+    horizontal: true,
+    datetime: '17:30 ngày 08/04/2020',
+    time_range: '1:30',
+    price: '350.000VNĐ',
+    status: 'Đã xác nhận',
+    star: 4.5,
+    promotion: 'Giảm giá 40k/h trước 16h từ thứ Hai - thứ Sáu',
+    distance: '2.0km'
   },
 ];

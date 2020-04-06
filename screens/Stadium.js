@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Dimensions, ScrollView } from 'react-native';
+import { StyleSheet, Dimensions, ScrollView, Linking } from 'react-native';
 import { Block, theme, Text } from 'galio-framework';
 import Slideshow from 'react-native-image-slider-show';
 import { Card, Icon, Button } from '../components';
@@ -13,12 +13,12 @@ class Stadium extends React.Component {
     position: 0,
     interval: null,
     dataSource: [
-      { 'url': 'http://placeimg.com/640/480/any' },
-      { 'url': 'http://placeimg.com/640/481/any' },
-      { 'url': 'http://placeimg.com/640/482/any' },
-      { 'url': 'http://placeimg.com/640/483/any' },
-      { 'url': 'http://placeimg.com/640/484/any' },
-      { 'url': 'http://placeimg.com/640/485/any' }
+      { 'url': 'https://sporta.s3-ap-southeast-1.amazonaws.com/uploads/production/image/image/44/thumb_sana_t.jpg?X-Amz-Expires=600&X-Amz-Date=20200406T082311Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIQW3XISBSHKJGJBQ%2F20200406%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=9a11f28db826f62cc16a01d8f84f6827e7b527771956332d14d571a5139ec816' },
+      { 'url': 'https://sporta.s3-ap-southeast-1.amazonaws.com/uploads/production/image/image/45/thumb_sana_t1.jpg?X-Amz-Expires=600&X-Amz-Date=20200406T082311Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIQW3XISBSHKJGJBQ%2F20200406%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=0cd238b2e9885c0e4fa78afbb91a2cfdedbbee81e55d9f78e1aabc0173bd0010' },
+      // { 'url': 'http://placeimg.com/640/482/any' },
+      // { 'url': 'http://placeimg.com/640/483/any' },
+      // { 'url': 'http://placeimg.com/640/484/any' },
+      // { 'url': 'http://placeimg.com/640/485/any' }
     ]
   }
 
@@ -74,7 +74,7 @@ class Stadium extends React.Component {
                 <Text size={16} style={styles.tabTitle}>{'ĐẶT SÂN'}</Text>
               </Block>
             </Button>
-            <Button shadowless style={styles.tab} onPress={() => navigation.navigate('Pro')}>
+            <Button shadowless style={styles.tab} onPress={() =>  Linking.openURL('google.navigation:q=San chao lua scsc')}>
               <Block row middle>
                 <Icon size={16} name="directions" family="material" style={{ paddingRight: 8 }} color={argonTheme.COLORS.PRIMARY} />
                 <Text size={16} style={styles.tabTitle}>{'CHỈ ĐƯỜNG'}</Text>

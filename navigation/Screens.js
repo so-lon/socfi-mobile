@@ -18,6 +18,7 @@ import Articles from "../screens/Articles";
 import Stadium from '../screens/Stadium';
 import Booking from '../screens/Booking';
 import BookingHistory from '../screens/BookingHistory';
+import BookingDetail from '../screens/BookingDetail';
 // drawer
 import CustomDrawerContent from "./Menu";
 
@@ -149,7 +150,7 @@ function HomeStack(props) {
         options={{
           header: ({ navigation, scene }) => (
             <Header
-              title="Home"
+              title="TRANG CHỦ"
               search
               options
               optionLeft="SAN BONG"
@@ -206,6 +207,24 @@ function BookingHistoryStack(props) {
             <Header
               title="THÔNG TIN ĐẶT SÂN"
               search
+              // options
+              // optionLeft="SAN BONG"
+              // optionRight="TIN TUC"
+              navigation={navigation}
+              scene={scene}
+            />
+          ),
+          cardStyle: { backgroundColor: "#F8F9FE" }
+        }}
+      />
+      <Stack.Screen
+        name="BookingDetail"
+        component={BookingDetail}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              title="CHI TIẾT ĐẶT SÂN"
+              back
               // options
               // optionLeft="SAN BONG"
               // optionRight="TIN TUC"

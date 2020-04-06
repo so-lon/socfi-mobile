@@ -7,7 +7,7 @@ import StarRating from 'react-native-star-rating';
 import { argonTheme } from '../constants';
 
 const { width } = Dimensions.get('screen');
-class Card extends React.Component {
+class Book extends React.Component {
   render() {
     const { navigation, item, horizontal, full, style, ctaColor, imageStyle } = this.props;
     
@@ -23,7 +23,7 @@ class Card extends React.Component {
 
     return (
       <Block row={horizontal} card flex style={cardContainer}>
-        <TouchableWithoutFeedback onPress={() => navigation.navigate('Stadium')}>
+        <TouchableWithoutFeedback onPress={() => navigation.navigate('BookingDetail')}>
           <Block flex style={imgContainer}>
             <Image source={{uri: item.image}} style={imageStyles} />
           </Block>
@@ -31,20 +31,20 @@ class Card extends React.Component {
         <TouchableWithoutFeedback onPress={() => navigation.navigate('Pro')}>
           <Block left flex space="between" style={styles.cardDescription}>
             <Text bold size={14} style={styles.cardTitle}>{item.title}</Text>
-            <Text size={12} style={styles.cardTitle}>Địa chỉ: {item.address}</Text>
-            <Text size={12} style={styles.cardTitle}>Giá ban ngày: {item.dayPrice}</Text>
-            <Text size={12} style={styles.cardTitle}>Giá ban đêm: {item.nightPrice}</Text>
-            {item.promotion && <Text size={12} style={styles.cardTitle}>Khuyến mãi: {item.promotion}</Text>}
-            <Text size={12} style={styles.cardTitle}>Khoảng cách: {item.distance}</Text>
+            <Text bold size={14} style={styles.cardTitle}>{item.datetime}</Text>
+            <Text bold size={14} style={styles.cardTitle}>{item.time_range}</Text>
+            <Text bold size={14} style={styles.cardTitle}>{item.price}</Text>
+            <Text bold size={14} style={styles.cardTitle}>{item.status}</Text>
+            {/* <Text size={12} style={styles.cardTitle}>Địa chỉ: Phan Thúc Duyện, Q.Tân Bình</Text>
+            <Text size={12} style={styles.cardTitle}>Giá: 200k ~ 450k</Text>
             <StarRating
               disabled={true}
               maxStars={5}
-              rating={item.star}
+              rating={5}
               starSize={16}
               fullStarColor={argonTheme.COLORS.PRIMARY}
               
-            />
-            
+            /> */}
             {/* <Text size={12} muted={!ctaColor} color={ctaColor || argonTheme.COLORS.ACTIVE} bold>{item.cta}</Text> */}
           </Block>
         </TouchableWithoutFeedback>
@@ -53,7 +53,7 @@ class Card extends React.Component {
   }
 }
 
-Card.propTypes = {
+Book.propTypes = {
   item: PropTypes.object,
   horizontal: PropTypes.bool,
   full: PropTypes.bool,
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     // borderRadius: 3,
   },
   horizontalImage: {
-    height: 122,
+    height: 145,
     width: 'auto',
   },
   horizontalStyles: {
@@ -120,4 +120,4 @@ const styles = StyleSheet.create({
   // },
 });
 
-export default withNavigation(Card);
+export default withNavigation(Book);
