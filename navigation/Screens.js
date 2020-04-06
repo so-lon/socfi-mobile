@@ -17,6 +17,7 @@ import Elements from "../screens/Elements";
 import Articles from "../screens/Articles";
 import Stadium from '../screens/Stadium';
 import Booking from '../screens/Booking';
+import BookingHistory from '../screens/BookingHistory';
 // drawer
 import CustomDrawerContent from "./Menu";
 
@@ -143,7 +144,7 @@ function HomeStack(props) {
   return (
     <Stack.Navigator mode="card" headerMode="screen">
       <Stack.Screen
-        name="Home"
+        name="TRANG CHỦ"
         component={Home}
         options={{
           header: ({ navigation, scene }) => (
@@ -183,6 +184,31 @@ function HomeStack(props) {
             <Header
               title="ĐẶT SÂN"
               back
+              navigation={navigation}
+              scene={scene}
+            />
+          ),
+          cardStyle: { backgroundColor: "#F8F9FE" }
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function BookingHistoryStack(props) {
+  return (
+    <Stack.Navigator mode="card" headerMode="screen">
+      <Stack.Screen
+        name="THÔNG TIN ĐẶT SÂN"
+        component={BookingHistory}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              title="THÔNG TIN ĐẶT SÂN"
+              search
+              // options
+              // optionLeft="SAN BONG"
+              // optionRight="TIN TUC"
               navigation={navigation}
               scene={scene}
             />
@@ -240,7 +266,8 @@ function AppStack(props) {
       }}
       initialRouteName="Home"
     >
-      <Drawer.Screen name="Home" component={HomeStack} />
+      <Drawer.Screen name="TRANG CHỦ" component={HomeStack} />
+      <Drawer.Screen name="THÔNG TIN ĐẶT SÂN" component={BookingHistoryStack} />
       <Drawer.Screen name="Profile" component={ProfileStack} />
       {/* <Drawer.Screen name="Account" component={Register} /> */}
       <Drawer.Screen name="Elements" component={ElementsStack} />
