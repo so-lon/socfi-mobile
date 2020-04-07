@@ -247,7 +247,7 @@ function BookingHistoryStack(props) {
           header: ({ navigation, scene }) => (
             <Header
               title="THÔNG TIN ĐẶT SÂN"
-              search
+              // search
               // options
               // optionLeft="SAN BONG"
               // optionRight="TIN TUC"

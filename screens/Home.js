@@ -61,7 +61,7 @@ class Home extends React.Component {
                 style={{ marginBottom: theme.SIZES.BASE / 2 }}
                 color={argonTheme.COLORS.PRIMARY}
               >
-                SAN BONG GAN DAY
+                SÂN BÓNG GẦN ĐÂY
               </Text>
             </Block>
             <Block right style={styles.right}>
@@ -90,11 +90,11 @@ class Home extends React.Component {
                 style={{ marginBottom: theme.SIZES.BASE / 2 }}
                 color={argonTheme.COLORS.PRIMARY}
               >
-                SÂN BÓNG GIAM GIA
+                SÂN BÓNG GIẢM GIÁ
               </Text>
             </Block>
             <Block right style={styles.right}>
-              <Text color={argonTheme.COLORS.PRIMARY} italic>Xem thêm...</Text>
+              {/* <Text color={argonTheme.COLORS.PRIMARY} italic>Xem thêm...</Text> */}
             </Block>
           </Block>
           <ScrollView horizontal>
@@ -120,7 +120,7 @@ class Home extends React.Component {
               {/* <Text>Xem thêm...</Text> */}
             </Block>
             <Block right style={styles.right}>
-              <Text color={argonTheme.COLORS.PRIMARY} italic>Xem thêm...</Text>
+              {/* <Text color={argonTheme.COLORS.PRIMARY} italic>Xem thêm...</Text> */}
             </Block>
           </Block>
           <ScrollView showsHorizontalScrollIndicator={false} horizontal>
