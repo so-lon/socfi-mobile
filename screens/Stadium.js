@@ -5,6 +5,7 @@ import Slideshow from 'react-native-image-slider-show';
 import { Card, Icon, Button } from '../components';
 import articles from '../constants/articles';
 import { argonTheme, tabs, Images } from "../constants";
+import { TouchableOpacity } from 'react-native-gesture-handler';
 const { width } = Dimensions.get('screen');
 const { height } = Dimensions.get('screen');
 
@@ -37,7 +38,7 @@ class Stadium extends React.Component {
   // }
 
   renderArticles = () => {
-    const {navigation} = this.props;
+    const { navigation } = this.props;
     return (
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -51,7 +52,7 @@ class Stadium extends React.Component {
         </Block>
         {/* line breaker */}
         {/* <Block style={{ marginVertical: 10, borderColor: "rgba(0,0,0,0.2)", width: '100%', borderWidth: StyleSheet.hairlineWidth }} /> */}
-        
+
         <Block flex>
           <Block style={styles.header}>
             <Block left styles={styles.left}>
@@ -69,17 +70,21 @@ class Stadium extends React.Component {
 
           <Block row center style={styles.options}>
             <Button shadowless style={styles.tab} onPress={() => navigation.navigate('Booking')}>
-              <Block row middle>
-                <Icon name="date-range" family="material" style={{ paddingRight: 8 }} color={argonTheme.COLORS.PRIMARY} />
-                <Text size={16} style={styles.tabTitle}>{'ĐẶT SÂN'}</Text>
-              </Block>
+              <TouchableOpacity>
+                <Block row middle>
+                  <Icon name="date-range" family="material" style={{ paddingRight: 8 }} color={argonTheme.COLORS.PRIMARY} />
+                  <Text size={16} style={styles.tabTitle}>{'ĐẶT SÂN'}</Text>
+                </Block>
+              </TouchableOpacity>
             </Button>
-            <Button shadowless style={styles.tab} onPress={() =>  Linking.openURL('google.navigation:q=San chao lua scsc')}>
-              <Block row middle>
-                <Icon size={16} name="directions" family="material" style={{ paddingRight: 8 }} color={argonTheme.COLORS.PRIMARY} />
-                <Text size={16} style={styles.tabTitle}>{'CHỈ ĐƯỜNG'}</Text>
-              </Block>
-            </Button>
+            <TouchableOpacity>
+              <Button style={styles.tab} onPress={() => Linking.openURL('google.navigation:q=San chao lua scsc')}>
+                <Block row middle>
+                  <Icon size={16} name="directions" family="material" style={{ paddingRight: 8 }} color={argonTheme.COLORS.PRIMARY} />
+                  <Text size={16} style={styles.tabTitle}>{'CHỈ ĐƯỜNG'}</Text>
+                </Block>
+              </Button>
+            </TouchableOpacity>
           </Block>
 
           <Block style={{ borderColor: "rgba(0,0,0,0.2)", width: '100%', borderWidth: StyleSheet.hairlineWidth }} />
@@ -132,7 +137,7 @@ class Stadium extends React.Component {
           </Block>
         </Block>
         {/* <Block center> */}
-          
+
         {/* </Block> */}
 
       </ScrollView>

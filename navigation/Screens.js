@@ -22,6 +22,7 @@ import Booking from '../screens/Booking';
 import BookingHistory from '../screens/BookingHistory';
 import BookingDetail from '../screens/BookingDetail';
 import NearbyStadium from '../screens/NearbyStadium';
+import News from '../screens/News';
 // drawer
 import CustomDrawerContent from "./Menu";
 
@@ -155,9 +156,6 @@ function HomeStack(props) {
             <Header
               title="TRANG CHỦ"
               search
-              options
-              optionLeft="SAN BONG"
-              optionRight="TIN TUC"
               navigation={navigation}
               scene={scene}
             />
@@ -203,6 +201,31 @@ function HomeStack(props) {
             <Header
               title="TÌM XUNG QUANH"
               back
+              navigation={navigation}
+              scene={scene}
+            />
+          ),
+          cardStyle: { backgroundColor: "#F8F9FE" }
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function NewsStack(props) {
+  return (
+    <Stack.Navigator mode="card" headerMode="screen">
+      <Stack.Screen
+        name="TIN TỨC"
+        component={News}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              title="TIN TỨC"
+              search
+              // options
+              // optionLeft="SAN BONG"
+              // optionRight="TIN TUC"
               navigation={navigation}
               scene={scene}
             />
@@ -318,6 +341,7 @@ function AppStack(props) {
       initialRouteName="Home"
     >
       <Drawer.Screen name="TRANG CHỦ" component={HomeStack} />
+      <Drawer.Screen name="TIN TỨC" component={NewsStack} />
       <Drawer.Screen name="THÔNG TIN ĐẶT SÂN" component={BookingHistoryStack} />
       <Drawer.Screen name="THÔNG TIN CÁ NHÂN" component={ProfileStack} />
       {/* <Drawer.Screen name="Account" component={Register} /> */}
