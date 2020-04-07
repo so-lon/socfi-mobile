@@ -72,10 +72,9 @@ class Home extends React.Component {
           </Block>
           <ScrollView horizontal>
             <Card item={articles.home[0]}  />
-            <Card item={articles.home[0]}  />
-            <Card item={articles.home[0]}  />
-            <Card item={articles.home[0]}  />
-            <Card item={articles.home[0]}  />
+            <Card item={articles.home[1]}  />
+            <Card item={articles.home[2]}  />
+            <Card item={articles.home[3]}  />
           </ScrollView>
         </Block>
 
@@ -98,11 +97,10 @@ class Home extends React.Component {
             </Block>
           </Block>
           <ScrollView horizontal>
+            <Card item={articles.home[1]} full />
+            <Card item={articles.home[3]} full />
             <Card item={articles.home[0]} full />
-            <Card item={articles.home[0]} full />
-            <Card item={articles.home[0]} full />
-            <Card item={articles.home[0]} full />
-            <Card item={articles.home[0]} full />
+            <Card item={articles.home[2]} full />
           </ScrollView>
         </Block>
         <Block style={{ marginVertical: 10, borderColor: "rgba(0,0,0,0.2)", width: '100%', borderWidth: StyleSheet.hairlineWidth }} />
@@ -130,11 +128,10 @@ class Home extends React.Component {
             <Card item={articles[2]} />
           </Block> */}
             {/* <Card item={articles[3]} horizontal /> */}
+            <Card item={articles.home[3]} full />
             <Card item={articles.home[0]} full />
-            <Card item={articles.home[0]} full />
-            <Card item={articles.home[0]} full />
-            <Card item={articles.home[0]} full />
-            <Card item={articles.home[0]} full />
+            <Card item={articles.home[2]} full />
+            <Card item={articles.home[1]} full />
           </ScrollView>
         </Block>
       </ScrollView>

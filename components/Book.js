@@ -2,7 +2,7 @@ import React from 'react';
 import { withNavigation } from '@react-navigation/compat';
 import PropTypes from 'prop-types';
 import { StyleSheet, Dimensions, Image, TouchableWithoutFeedback } from 'react-native';
-import { Block, Text, theme } from 'galio-framework';
+import { Block, Text, theme, Button } from 'galio-framework';
 import StarRating from 'react-native-star-rating';
 import { argonTheme } from '../constants';
 
@@ -32,9 +32,10 @@ class Book extends React.Component {
           <Block left flex space="between" style={styles.cardDescription}>
             <Text bold size={14} style={styles.cardTitle}>{item.title}</Text>
             <Text bold size={14} style={styles.cardTitle}>{item.datetime}</Text>
-            <Text bold size={14} style={styles.cardTitle}>{item.time_range}</Text>
-            <Text bold size={14} style={styles.cardTitle}>{item.price}</Text>
+            <Text bold size={14} style={styles.cardTitle}>Thời lượng: {item.time_range}</Text>
+            <Text bold size={14} style={styles.cardTitle}>Tổng: {item.price}</Text>
             <Text bold size={14} style={styles.cardTitle}>{item.status}</Text>
+            {item.status =='Đã xác nhận' && <Button color='error' style = {{width: 90}}>Huỷ đặt sân</Button>}
             {/* <Text size={12} style={styles.cardTitle}>Địa chỉ: Phan Thúc Duyện, Q.Tân Bình</Text>
             <Text size={12} style={styles.cardTitle}>Giá: 200k ~ 450k</Text>
             <StarRating
@@ -90,7 +91,7 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     borderRadius: 3,
-    elevation: 1,
+    // elevation: 1,
     overflow: 'hidden',
   },
   image: {

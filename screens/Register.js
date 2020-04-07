@@ -93,8 +93,8 @@ class Register extends React.Component {
                           <Icon
                             size={16}
                             color={argonTheme.COLORS.ICON}
-                            name="bell"
-                            family="ArgonExtra"
+                            name="phone"
+                            family="font-awesome"
                             style={styles.inputIcons}
                           />
                         }

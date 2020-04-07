@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Dimensions, ScrollView, View } from 'react-native';
+import { StyleSheet, Dimensions, ScrollView, View, ToastAndroid } from 'react-native';
 import { Block, theme, Text } from 'galio-framework';
 import Slideshow from 'react-native-image-slider-show';
 import { Card, Icon, Button, Select } from '../components';
@@ -9,12 +9,14 @@ import { argonTheme, tabs, Images } from "../constants";
 const { width } = Dimensions.get('screen');
 const { height } = Dimensions.get('screen');
 import Accordion from 'react-native-collapsible/Accordion';
+import Constants from "expo-constants";
 const SECTIONS = [
   {
     title: 'Thứ Hai',
     content: [
       'Sân 5 người: 08:00 - 17:30: 150.000VNĐ/h',
       'Sân 5 người: 17:30 - 24:00: 300.000VNĐ/h',
+      'Sân 7 người: 19:00 - 21:00: 1.000.000VNĐ/h',
     ]
   },
   {
@@ -22,6 +24,7 @@ const SECTIONS = [
     content: [
       'Sân 5 người: 08:00 - 17:30: 150.000VNĐ/h',
       'Sân 5 người: 17:30 - 24:00: 300.000VNĐ/h',
+      'Sân 7 người: 19:00 - 21:00: 1.000.000VNĐ/h',
     ]
   },
   {
@@ -29,6 +32,7 @@ const SECTIONS = [
     content: [
       'Sân 5 người: 08:00 - 17:30: 150.000VNĐ/h',
       'Sân 5 người: 17:30 - 24:00: 300.000VNĐ/h',
+      'Sân 7 người: 19:00 - 21:00: 1.000.000VNĐ/h',
     ]
   },
   {
@@ -36,6 +40,7 @@ const SECTIONS = [
     content: [
       'Sân 5 người: 08:00 - 17:30: 150.000VNĐ/h',
       'Sân 5 người: 17:30 - 24:00: 300.000VNĐ/h',
+      'Sân 7 người: 19:00 - 21:00: 1.000.000VNĐ/h',
     ]
   },
   {
@@ -43,6 +48,7 @@ const SECTIONS = [
     content: [
       'Sân 5 người: 08:00 - 17:30: 150.000VNĐ/h',
       'Sân 5 người: 17:30 - 24:00: 300.000VNĐ/h',
+      'Sân 7 người: 19:00 - 21:00: 1.000.000VNĐ/h',
     ]
   },
   {
@@ -50,6 +56,7 @@ const SECTIONS = [
     content: [
       'Sân 5 người: 08:00 - 17:30: 220.000VNĐ/h',
       'Sân 5 người: 17:30 - 24:00: 350.000VNĐ/h',
+      'Sân 7 người: 19:00 - 21:00: 1.200.000VNĐ/h',
     ]
   },
   {
@@ -57,6 +64,7 @@ const SECTIONS = [
     content: [
       'Sân 5 người: 08:00 - 17:30: 220.000VNĐ/h',
       'Sân 5 người: 17:30 - 24:00: 350.000VNĐ/h',
+      'Sân 7 người: 19:00 - 21:00: 1.200.000VNĐ/h',
     ]
   },
 ];
@@ -247,6 +255,19 @@ class Booking extends React.Component {
                 size={20}
                 color={argonTheme.COLORS.PRIMARY}
                 style={{ marginRight: 5 }}
+              />  Sân 1 (loại sân 5):
+              </Text>
+            <Text style={{ marginLeft: 20, marginBottom: 5 }}>● 08h00 - 17h00</Text>
+            <Text style={{ marginLeft: 20, marginBottom: 5 }}>● 21h00 - 24h00</Text>
+          </Block>
+          <Block style={{ marginLeft: 30 }}>
+            <Text style={{ marginVertical: 10 }}>
+              <Icon
+                name="soccer-field"
+                family="material-community"
+                size={20}
+                color={argonTheme.COLORS.PRIMARY}
+                style={{ marginRight: 5 }}
               />  Sân 2 (loại sân 5):
               </Text>
             <Text style={{ marginLeft: 20, marginBottom: 5 }}>● 08h00 - 17h00</Text>
@@ -273,10 +294,9 @@ class Booking extends React.Component {
                 size={20}
                 color={argonTheme.COLORS.PRIMARY}
                 style={{ marginRight: 5 }}
-              />  Sân 1 (loại sân 5):
+              />  Sân 4 (loại sân 7):
               </Text>
-            <Text style={{ marginLeft: 20, marginBottom: 5 }}>● 08h00 - 17h00</Text>
-            <Text style={{ marginLeft: 20, marginBottom: 5 }}>● 21h00 - 24h00</Text>
+            <Text style={{ marginLeft: 20, marginBottom: 5 }}>● 19h00 - 21h00</Text>
           </Block>
 
           <Block row style={styles.label}>
@@ -294,7 +314,7 @@ class Booking extends React.Component {
             style={{ marginBottom: 10, marginLeft: 30 }}
             value="Sân 1"
             defaultIndex={0}
-            options={["Sân 1", "Sân 2", "Sân 3"]}
+            options={["Sân 1", "Sân 2", "Sân 3", "Sân 4"]}
           />
 
           <Block row style={styles.label}>
@@ -426,6 +446,14 @@ class Booking extends React.Component {
     )
   }
 
+  showToastWithGravity = () => {
+    ToastAndroid.showWithGravity(
+      "Bạn đã đặt sân thành công!",
+      ToastAndroid.SHORT,
+      ToastAndroid.CENTER
+    );
+  };
+
   render() {
     const { navigation } = this.props;
     return (
@@ -435,7 +463,7 @@ class Booking extends React.Component {
           {this.renderPromotion()}
           {this.renderSchedule()}
           {/* {this.renderBooking()} */}
-          <Button>XÁC NHẬN ĐẶT</Button>
+          <Button onPress={() => this.showToastWithGravity()}>XÁC NHẬN ĐẶT</Button>
         </Block>
       </ScrollView>
     );

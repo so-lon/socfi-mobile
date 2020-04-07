@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { Block, Text, theme } from "galio-framework";
 
-import { Button } from "../components";
+import { Button, Input } from "../components";
 import { Images, argonTheme } from "../constants";
 import { HeaderHeight } from "../constants/utils";
 
@@ -39,7 +39,7 @@ class Profile extends React.Component {
                   />
                 </Block>
                 <Block style={styles.info}>
-                  <Block
+                  {/* <Block
                     middle
                     row
                     space="evenly"
@@ -57,8 +57,8 @@ class Profile extends React.Component {
                     >
                       MESSAGE
                     </Button>
-                  </Block>
-                  <Block row space="between">
+                  </Block> */}
+                  {/* <Block row space="between">
                     <Block middle>
                       <Text
                         bold
@@ -92,21 +92,21 @@ class Profile extends React.Component {
                       </Text>
                       <Text size={12} color={argonTheme.COLORS.TEXT}>Comments</Text>
                     </Block>
-                  </Block>
+                  </Block> */}
                 </Block>
                 <Block flex>
                   <Block middle style={styles.nameInfo}>
                     <Text bold size={28} color="#32325D">
-                      Jessica Jones, 27
+                      Nguyên Công Phượng
                     </Text>
                     <Text size={16} color="#32325D" style={{ marginTop: 10 }}>
-                      San Francisco, USA
+                      TP.Hồ Chí Minh
                     </Text>
                   </Block>
                   <Block middle style={{ marginTop: 30, marginBottom: 16 }}>
                     <Block style={styles.divider} />
                   </Block>
-                  <Block middle>
+                  {/* <Block middle>
                     <Text
                       size={16}
                       color="#525F7F"
@@ -125,16 +125,16 @@ class Profile extends React.Component {
                     >
                       Show more
                     </Button>
-                  </Block>
+                  </Block> */}
                   <Block
                     row
                     style={{ paddingVertical: 14, alignItems: "baseline" }}
                   >
                     <Text bold size={16} color="#525F7F">
-                      Album
+                      Thông tin của bạn
                     </Text>
                   </Block>
-                  <Block
+                  {/* <Block
                     row
                     style={{ paddingBottom: 20, justifyContent: "flex-end" }}
                   >
@@ -145,18 +145,48 @@ class Profile extends React.Component {
                     >
                       View all
                     </Button>
-                  </Block>
+                  </Block> */}
                   <Block style={{ paddingBottom: -HeaderHeight * 2 }}>
-                    <Block row space="between" style={{ flexWrap: "wrap" }}>
-                      {Images.Viewed.map((img, imgIndex) => (
-                        <Image
-                          source={{ uri: img }}
-                          key={`viewed-${img}`}
-                          resizeMode="cover"
-                          style={styles.thumb}
-                        />
-                      ))}
-                    </Block>
+                    <Input
+                      label='Tên đăng nhập'
+                      right
+                      editable={false}
+                      value='nguyencongphuong@gmail.com'
+                      placeholder="Regular Custom"
+                      style={{
+                        borderColor: argonTheme.COLORS.BLOCK,
+                        borderRadius: 4,
+                        backgroundColor: "#fff"
+                      }}
+                      iconContent={<Block />}
+                    />
+                    <Input
+                      label='Tên của bạn'
+                      value='Nguyễn Công Phượng'
+                      right
+                      placeholder="Regular Custom"
+                      style={{
+                        borderColor: argonTheme.COLORS.INFO,
+                        borderRadius: 4,
+                        backgroundColor: "#fff"
+                      }}
+                      iconContent={<Block />}
+                    />
+                    <Input
+                      label='Số điện thoại'
+                      value='0986 686868'
+                      right
+                      placeholder="Regular Custom"
+                      style={{
+                        borderColor: argonTheme.COLORS.INFO,
+                        borderRadius: 4,
+                        backgroundColor: "#fff"
+                      }}
+                      iconContent={<Block />}
+                    />
+                  </Block>
+                  <Block center style={{marginVertical: 40}}>
+                    <Button>Lưu</Button>
                   </Block>
                 </Block>
               </Block>

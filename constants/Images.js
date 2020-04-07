@@ -12,7 +12,7 @@ const Cover = require("../assets/imgs/cover.png");
 const SocfiLogo = require("../assets/imgs/logo-dark.png");
 // internet imgs
 
-const ProfilePicture = 'https://images.unsplash.com/photo-1492633423870-43d1cd2775eb?fit=crop&w=1650&q=80';
+const ProfilePicture = 'https://images.daznservices.com/di/library/GOAL/ca/2b/nguyen-cong-phuong-ho-chi-minh-city-fc-vs-ha-noi-fc-vietnamese-super-cup-2019_l32p0tb4mbr4134jl3oiyxtv3.jpg?t=-1704568048&quality=100';
 
 const Viewed = [
   'https://images.unsplash.com/photo-1501601983405-7c7cabaa1581?fit=crop&w=240&q=80',

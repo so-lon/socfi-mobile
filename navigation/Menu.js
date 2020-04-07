@@ -17,9 +17,9 @@ function CustomDrawerContent({ drawerPosition, navigation, profile, focused, sta
     "KHUYẾN MÃI", 
     "THÔNG TIN ĐẶT SÂN",
     "THÔNG TIN CÁ NHÂN",
-    "Account",
-    "Elements",
-    "Articles",
+    // "Account",
+    // "Elements",
+    // "Articles",
   ];
   return (
     <Block
@@ -27,7 +27,7 @@ function CustomDrawerContent({ drawerPosition, navigation, profile, focused, sta
       forceInset={{ top: 'always', horizontal: 'never' }}
     >
       <Block flex={0.06} style={styles.header}>
-        <Image styles={styles.logo} source={Images.Logo} />
+        <Image style={styles.logo} source={Images.SocfiLogo} />
       </Block>
       <Block flex style={{ paddingLeft: 8, paddingRight: 14 }}>
         <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
@@ -62,6 +62,10 @@ const styles = StyleSheet.create({
     paddingBottom: theme.SIZES.BASE,
     paddingTop: theme.SIZES.BASE * 3,
     justifyContent: 'center'
+  },
+  logo: {
+    width: 120,
+    height: 50
   }
 });
 

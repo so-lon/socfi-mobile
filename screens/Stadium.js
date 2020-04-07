@@ -98,7 +98,7 @@ class Stadium extends React.Component {
                 color={argonTheme.COLORS.PRIMARY}
                 style={{ marginRight: 5 }}
               />
-              <Text size={16}>Đường Phan Thúc Duyện, Quận Tân Bình</Text>
+              <Text size={16}>Địa chỉ: 35 Phan Thúc Duyện, Quận Tân Bình</Text>
             </Block>
 
             <Block row style={{ marginBottom: 20 }}>
@@ -109,7 +109,7 @@ class Stadium extends React.Component {
                 color={argonTheme.COLORS.PRIMARY}
                 style={{ marginRight: 5 }}
               />
-              <Text size={16}>0969982324</Text>
+              <Text size={16}>SĐT liên hệ: 0969982324</Text>
             </Block>
 
             <Block row style={{ marginBottom: 20 }}>
@@ -120,7 +120,7 @@ class Stadium extends React.Component {
                 color={argonTheme.COLORS.PRIMARY}
                 style={{ marginRight: 5 }}
               />
-              <Text size={16}>08:00 - 24:00</Text>
+              <Text size={16}>Giờ mở cửa: 08:00 - 24:00</Text>
             </Block>
 
             <Block row style={{ marginBottom: 20 }}>
@@ -131,7 +131,7 @@ class Stadium extends React.Component {
                 color={argonTheme.COLORS.PRIMARY}
                 style={{ marginRight: 5 }}
               />
-              <Text size={16}>100k - 350k/giờ</Text>
+              <Text size={16}>Mức giá: 150k - 350k/giờ</Text>
             </Block>
 
           </Block>

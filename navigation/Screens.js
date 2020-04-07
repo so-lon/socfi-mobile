@@ -156,6 +156,7 @@ function HomeStack(props) {
             <Header
               title="TRANG CHỦ"
               search
+              placeholder="Nhập tên sân hoặc khu vực muốn tìm kiếm"
               navigation={navigation}
               scene={scene}
             />
@@ -222,7 +223,7 @@ function NewsStack(props) {
           header: ({ navigation, scene }) => (
             <Header
               title="KHUYẾN MÃI"
-              search
+              // search
               // options
               // optionLeft="SAN BONG"
               // optionRight="TIN TUC"
