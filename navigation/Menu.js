@@ -14,7 +14,7 @@ function CustomDrawerContent({ drawerPosition, navigation, profile, focused, sta
   const insets = useSafeArea();
   const screens = [
     "TRANG CHỦ",
-    "TIN TỨC", 
+    "KHUYẾN MÃI", 
     "THÔNG TIN ĐẶT SÂN",
     "THÔNG TIN CÁ NHÂN",
     "Account",

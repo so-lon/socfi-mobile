@@ -216,12 +216,12 @@ function NewsStack(props) {
   return (
     <Stack.Navigator mode="card" headerMode="screen">
       <Stack.Screen
-        name="TIN TỨC"
+        name="KHUYẾN MÃI"
         component={News}
         options={{
           header: ({ navigation, scene }) => (
             <Header
-              title="TIN TỨC"
+              title="KHUYẾN MÃI"
               search
               // options
               // optionLeft="SAN BONG"
@@ -341,7 +341,7 @@ function AppStack(props) {
       initialRouteName="Home"
     >
       <Drawer.Screen name="TRANG CHỦ" component={HomeStack} />
-      <Drawer.Screen name="TIN TỨC" component={NewsStack} />
+      <Drawer.Screen name="KHUYẾN MÃI" component={NewsStack} />
       <Drawer.Screen name="THÔNG TIN ĐẶT SÂN" component={BookingHistoryStack} />
       <Drawer.Screen name="THÔNG TIN CÁ NHÂN" component={ProfileStack} />
       {/* <Drawer.Screen name="Account" component={Register} /> */}
