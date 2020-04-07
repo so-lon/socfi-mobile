@@ -14,9 +14,8 @@ class Stadium extends React.Component {
     position: 0,
     interval: null,
     dataSource: [
-      { 'url': 'https://sporta.s3-ap-southeast-1.amazonaws.com/uploads/production/image/image/44/thumb_sana_t.jpg?X-Amz-Expires=600&X-Amz-Date=20200406T082311Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIQW3XISBSHKJGJBQ%2F20200406%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=9a11f28db826f62cc16a01d8f84f6827e7b527771956332d14d571a5139ec816' },
-      { 'url': 'https://sporta.s3-ap-southeast-1.amazonaws.com/uploads/production/image/image/45/thumb_sana_t1.jpg?X-Amz-Expires=600&X-Amz-Date=20200406T082311Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIQW3XISBSHKJGJBQ%2F20200406%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=0cd238b2e9885c0e4fa78afbb91a2cfdedbbee81e55d9f78e1aabc0173bd0010' },
-      // { 'url': 'http://placeimg.com/640/482/any' },
+      { 'url': 'https://media.discordapp.net/attachments/682134033739808891/697193794621145178/1.jpg?width=500&height=333' },
+      { 'url': 'https://media.discordapp.net/attachments/682134033739808891/697195735912808468/4.jpeg ' },
       // { 'url': 'http://placeimg.com/640/483/any' },
       // { 'url': 'http://placeimg.com/640/484/any' },
       // { 'url': 'http://placeimg.com/640/485/any' }

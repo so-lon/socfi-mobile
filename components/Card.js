@@ -28,7 +28,7 @@ class Card extends React.Component {
             <Image source={{uri: item.image}} style={imageStyles} />
           </Block>
         </TouchableWithoutFeedback>
-        <TouchableWithoutFeedback onPress={() => navigation.navigate('Pro')}>
+        <TouchableWithoutFeedback onPress={() => navigation.navigate('Stadium')}>
           <Block left flex space="between" style={styles.cardDescription}>
             <Text bold size={14} style={styles.cardTitle}>{item.title}</Text>
             <Text size={12} style={styles.cardTitle}>
