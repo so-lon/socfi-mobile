@@ -10,6 +10,7 @@ import { Block, Checkbox, Text, theme } from "galio-framework";
 
 import { Button, Icon, Input } from "../components";
 import { Images, argonTheme } from "../constants";
+import { ScrollView } from "react-native-gesture-handler";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -27,19 +28,19 @@ class Register extends React.Component {
             <Block style={styles.registerContainer}>
               <Block flex={0.25} middle style={styles.socialConnect}>
                 <Text color="#8898AA" size={12}>
-                  Sign up with
+                  Đăng ký tài khoản bằng
                 </Text>
                 <Block row style={{ marginTop: theme.SIZES.BASE }}>
                   <Button style={{ ...styles.socialButtons, marginRight: 30 }}>
                     <Block row>
                       <Icon
-                        name="logo-github"
+                        name="logo-facebook"
                         family="Ionicon"
                         size={14}
                         color={"black"}
                         style={{ marginTop: 2, marginRight: 5 }}
                       />
-                      <Text style={styles.socialTextButtons}>GITHUB</Text>
+                      <Text style={styles.socialTextButtons}>FACEBOOK</Text>
                     </Block>
                   </Button>
                   <Button style={styles.socialButtons}>
@@ -57,9 +58,10 @@ class Register extends React.Component {
                 </Block>
               </Block>
               <Block flex>
+                <ScrollView>
                 <Block flex={0.17} middle>
                   <Text color="#8898AA" size={12}>
-                    Or sign up the classic way
+                    Hoặc đăng ký theo thông tin
                   </Text>
                 </Block>
                 <Block flex center>
@@ -71,7 +73,7 @@ class Register extends React.Component {
                     <Block width={width * 0.8} style={{ marginBottom: 15 }}>
                       <Input
                         borderless
-                        placeholder="Name"
+                        placeholder="Tên..."
                         iconContent={
                           <Icon
                             size={16}
@@ -86,7 +88,22 @@ class Register extends React.Component {
                     <Block width={width * 0.8} style={{ marginBottom: 15 }}>
                       <Input
                         borderless
-                        placeholder="Email"
+                        placeholder="Số điện thoại..."
+                        iconContent={
+                          <Icon
+                            size={16}
+                            color={argonTheme.COLORS.ICON}
+                            name="bell"
+                            family="ArgonExtra"
+                            style={styles.inputIcons}
+                          />
+                        }
+                      />
+                    </Block>
+                    <Block width={width * 0.8} style={{ marginBottom: 15 }}>
+                      <Input
+                        borderless
+                        placeholder="Email..."
                         iconContent={
                           <Icon
                             size={16}
@@ -102,7 +119,7 @@ class Register extends React.Component {
                       <Input
                         password
                         borderless
-                        placeholder="Password"
+                        placeholder="Mật khẩu..."
                         iconContent={
                           <Icon
                             size={16}
@@ -115,11 +132,11 @@ class Register extends React.Component {
                       />
                       <Block row style={styles.passwordCheck}>
                         <Text size={12} color={argonTheme.COLORS.MUTED}>
-                          password strength:
+                          độ an toàn mật khẩu:
                         </Text>
-                        <Text bold size={12} color={argonTheme.COLORS.SUCCESS}>
+                        <Text bold size={12} color={argonTheme.COLORS.ERROR}>
                           {" "}
-                          strong
+                          Kém
                         </Text>
                       </Block>
                     </Block>
@@ -129,28 +146,29 @@ class Register extends React.Component {
                           borderWidth: 3
                         }}
                         color={argonTheme.COLORS.PRIMARY}
-                        label="I agree with the"
+                        label="Tôi đồng ý với"
                       />
                       <Button
-                        style={{ width: 100 }}
+                        style={{ width: 150 }}
                         color="transparent"
                         textStyle={{
                           color: argonTheme.COLORS.PRIMARY,
                           fontSize: 14
                         }}
                       >
-                        Privacy Policy
+                        Điều Khoản Sử Dụng
                       </Button>
                     </Block>
                     <Block middle>
                       <Button color="primary" onPress={() => navigation.navigate("App")} style={styles.createButton}>
                         <Text bold size={14} color={argonTheme.COLORS.WHITE}>
-                          CREATE ACCOUNT
+                          ĐĂNG KÝ
                         </Text>
                       </Button>
                     </Block>
                   </KeyboardAvoidingView>
                 </Block>
+                </ScrollView>
               </Block>
             </Block>
           </Block>

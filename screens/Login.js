@@ -11,6 +11,7 @@ import { Block, Checkbox, Text, theme } from "galio-framework";
 
 import { Button, Icon, Input } from "../components";
 import { Images, argonTheme } from "../constants";
+import { ScrollView } from "react-native-gesture-handler";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -59,6 +60,7 @@ class Login extends React.Component {
               </Block>
 
               <Block flex style={{marginTop: 50}}>
+                <ScrollView>
                 <Block flex={0.17} middle style={{marginBottom: 30}}>
                   <Text color="#8898AA" size={12}>
                     hoặc đăng nhập bằng tài khoản
@@ -152,8 +154,21 @@ class Login extends React.Component {
                         </Text>
                       </Button>
                     </Block>
+                    <Block row style={{ marginTop: theme.SIZES.BASE }}>
+                      <Block row style={styles.passwordCheck}>
+                        <Text size={12} color={argonTheme.COLORS.DEFAULT} onPress={() => navigation.navigate("Register")}>
+                          Đăng Ký Tài Khoản
+                        </Text>
+                      </Block>
+                      <Block row style={styles.passwordCheck}>
+                        <Text size={12} color={argonTheme.COLORS.DEFAULT} onPress={() => navigation.navigate("ForgotPassword")}>
+                          Quên Mật Khẩu
+                        </Text>
+                      </Block>
+                    </Block>
                   </KeyboardAvoidingView>
                 </Block>
+                </ScrollView>
               </Block>
             </Block>
           </Block>
@@ -206,9 +221,11 @@ const styles = StyleSheet.create({
     marginRight: 12
   },
   passwordCheck: {
+    marginTop: 10,
     paddingLeft: 15,
     paddingTop: 13,
-    paddingBottom: 30
+    paddingBottom: 30,
+    marginLeft: 25 
   },
   createButton: {
     width: width * 0.5,
