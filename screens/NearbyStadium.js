@@ -33,6 +33,22 @@ const markers = [
     title: 'Sân Quân đội 917',
     description: 'Sân Bóng đá mini Quân đội 917'
   },
+  {
+    latlng: {
+      latitude: 10.8009322,
+      longitude: 106.6668593,
+    },
+    title: 'Sân Thăng Long',
+    description: 'Sân Bóng đá mini Thăng Long'
+  },
+  {
+    latlng: {
+      latitude: 10.7929322,
+      longitude: 106.6668593,
+    },
+    title: 'Sân Thăng Long',
+    description: 'Sân Bóng đá mini Thăng Long'
+  },
 ];
 class NearbyStadium extends React.Component {
 

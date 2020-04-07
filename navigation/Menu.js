@@ -15,7 +15,7 @@ function CustomDrawerContent({ drawerPosition, navigation, profile, focused, sta
   const screens = [
     "TRANG CHỦ", 
     "THÔNG TIN ĐẶT SÂN",
-    "Profile",
+    "THÔNG TIN CÁ NHÂN",
     "Account",
     "Elements",
     "Articles",
@@ -42,9 +42,9 @@ function CustomDrawerContent({ drawerPosition, navigation, profile, focused, sta
             })}
             <Block flex style={{ marginTop: 24, marginVertical: 8, paddingHorizontal: 8 }}>
               <Block style={{ borderColor: "rgba(0,0,0,0.2)", width: '100%', borderWidth: StyleSheet.hairlineWidth }}/>
-              <Text color="#8898AA" style={{ marginTop: 16, marginLeft: 8 }}>DOCUMENTATION</Text>
+              {/* <Text color="#8898AA" style={{ marginTop: 16, marginLeft: 8 }}>DOCUMENTATION</Text> */}
             </Block>
-            <DrawerCustomItem title="Getting Started" navigation={navigation} />
+            <DrawerCustomItem title="ĐĂNG XUẤT" navigation={navigation} />
         </ScrollView>
       </Block>
     </Block>

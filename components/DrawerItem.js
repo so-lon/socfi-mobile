@@ -22,8 +22,8 @@ class DrawerItem extends React.Component {
       case "THÔNG TIN ĐẶT SÂN":
         return (
           <Icon
-            name="shop"
-            family="ArgonExtra"
+            name="calendar-clock"
+            family="material-community"
             size={14}
             color={focused ? "white" : argonTheme.COLORS.PRIMARY}
           />
@@ -46,11 +46,11 @@ class DrawerItem extends React.Component {
             color={focused ? "white" : argonTheme.COLORS.PRIMARY}
           />
         );
-      case "Profile":
+      case "THÔNG TIN CÁ NHÂN":
         return (
           <Icon
-            name="chart-pie-35"
-            family="ArgonExtra"
+            name="person"
+            family="material"
             size={14}
             color={focused ? "white" : argonTheme.COLORS.WARNING}
           />
@@ -71,8 +71,13 @@ class DrawerItem extends React.Component {
           size={14}
           color={focused ? "white" : "rgba(0,0,0,0.5)"}
         />);
-      case "Log out":
-        return <Icon />;
+      case "ĐĂNG XUẤT":
+        return (<Icon
+          name="subdirectory-arrow-left"
+          family="material"
+          size={14}
+          color={focused ? "white" : "rgba(0,0,0,0.5)"}
+        />);
       default:
         return null;
     }
@@ -90,10 +95,8 @@ class DrawerItem extends React.Component {
       <TouchableOpacity
         style={{ height: 60 }}
         onPress={() =>
-          title == "Getting Started"
-            ? Linking.openURL(
-              "https://demos.creative-tim.com/argon-pro-react-native/docs/"
-            ).catch(err => console.error("An error occurred", err))
+          title == "ĐĂNG XUẤT"
+            ? navigation.navigate('Login')
             : navigation.navigate(title)
         }
       >

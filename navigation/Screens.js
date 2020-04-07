@@ -105,14 +105,14 @@ function ProfileStack(props) {
   return (
     <Stack.Navigator initialRouteName="Profile" mode="card" headerMode="screen">
       <Stack.Screen
-        name="Profile"
+        name="THÔNG TIN CÁ NHÂN"
         component={Profile}
         options={{
           header: ({ navigation, scene }) => (
             <Header
               transparent
               white
-              title="Profile"
+              title="THÔNG TIN CÁ NHÂN"
               navigation={navigation}
               scene={scene}
             />
@@ -303,7 +303,7 @@ function AppStack(props) {
     >
       <Drawer.Screen name="TRANG CHỦ" component={HomeStack} />
       <Drawer.Screen name="THÔNG TIN ĐẶT SÂN" component={BookingHistoryStack} />
-      <Drawer.Screen name="Profile" component={ProfileStack} />
+      <Drawer.Screen name="THÔNG TIN CÁ NHÂN" component={ProfileStack} />
       {/* <Drawer.Screen name="Account" component={Register} /> */}
       <Drawer.Screen name="Elements" component={ElementsStack} />
       <Drawer.Screen name="Articles" component={ArticlesStack} />
