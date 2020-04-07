@@ -13,6 +13,8 @@ import Onboarding from "../screens/Onboarding";
 import Pro from "../screens/Pro";
 import Profile from "../screens/Profile";
 import Register from "../screens/Register";
+import Login from "../screens/Login";
+import ForgotPassword from "../screens/ForgotPassword";
 import Elements from "../screens/Elements";
 import Articles from "../screens/Articles";
 import Stadium from '../screens/Stadium';
@@ -260,7 +262,21 @@ export default function OnboardingStack(props) {
     <Stack.Navigator mode="card" headerMode="none">
       <Stack.Screen
         name="Login"
+        component={Login}
+        option={{
+          headerTransparent: true
+        }}
+      />
+      <Stack.Screen
+        name="Register"
         component={Register}
+        option={{
+          headerTransparent: true
+        }}
+      />
+      <Stack.Screen
+        name="ForgotPassword"
+        component={ForgotPassword}
         option={{
           headerTransparent: true
         }}
