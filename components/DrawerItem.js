@@ -25,7 +25,7 @@ class DrawerItem extends React.Component {
             name="newspaper-o"
             family="font-awesome"
             size={14}
-            color={focused ? "white" : argonTheme.COLORS.PRIMARY}
+            color={focused ? "white" : argonTheme.COLORS.ERROR}
           />
         );
       case "THÔNG TIN ĐẶT SÂN":

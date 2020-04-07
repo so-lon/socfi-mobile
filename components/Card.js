@@ -5,7 +5,7 @@ import { StyleSheet, Dimensions, Image, TouchableWithoutFeedback } from 'react-n
 import { Block, Text, theme } from 'galio-framework';
 import StarRating from 'react-native-star-rating';
 import { argonTheme } from '../constants';
-
+import { Icon } from '../components';
 const { width } = Dimensions.get('screen');
 class Card extends React.Component {
   render() {
@@ -31,17 +31,50 @@ class Card extends React.Component {
         <TouchableWithoutFeedback onPress={() => navigation.navigate('Pro')}>
           <Block left flex space="between" style={styles.cardDescription}>
             <Text bold size={14} style={styles.cardTitle}>{item.title}</Text>
-            <Text size={12} style={styles.cardTitle}>Địa chỉ: {item.address}</Text>
-            <Text size={12} style={styles.cardTitle}>Giá ban ngày: {item.dayPrice}</Text>
-            <Text size={12} style={styles.cardTitle}>Giá ban đêm: {item.nightPrice}</Text>
-            {item.promotion && <Text size={12} style={styles.cardTitle}>Khuyến mãi: {item.promotion}</Text>}
+            <Text size={12} style={styles.cardTitle}>
+            <Icon
+                name="location-on"
+                family="material"
+                size={12}
+                color={argonTheme.COLORS.ACTIVE}
+                style={{ marginRight: 5 }}
+              />
+              Địa chỉ: {item.address}
+              </Text>
+            <Text size={12} style={styles.cardTitle}>
+            <Icon
+                name="attach-money"
+                family="material"
+                size={12}
+                color={argonTheme.COLORS.YELLOW}
+                style={{ marginRight: 5 }}
+              />
+            Giá ban ngày: {item.dayPrice}</Text>
+            <Text size={12} style={styles.cardTitle}>
+            <Icon
+                name="attach-money"
+                family="material"
+                size={12}
+                color={argonTheme.COLORS.YELLOW}
+                style={{ marginRight: 5 }}
+              />
+            Giá ban đêm: {item.nightPrice}</Text>
+            {item.promotion && <Text size={12} style={styles.cardTitle}>
+            <Icon
+            name="whatshot"
+            family="material"
+            size={12}
+            color={argonTheme.COLORS.ERROR}
+            style={{ marginRight: 5 }}
+          />
+            Khuyến mãi: {item.promotion}</Text>}
             <Text size={12} style={styles.cardTitle}>Khoảng cách: {item.distance}</Text>
             <StarRating
               disabled={true}
               maxStars={5}
               rating={item.star}
               starSize={16}
-              fullStarColor={argonTheme.COLORS.PRIMARY}
+              fullStarColor={argonTheme.COLORS.DEFAULT}
               
             />
             
