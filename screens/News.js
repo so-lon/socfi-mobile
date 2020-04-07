@@ -2,13 +2,13 @@ import React from 'react';
 import { StyleSheet, Dimensions, ScrollView } from 'react-native';
 import { Block, theme, Text } from 'galio-framework';
 import Slideshow from 'react-native-image-slider-show';
-import { Book } from '../components';
+import { Book, Icon } from '../components';
 import articles from '../constants/articles';
-import { argonTheme, tabs, Images } from "../constants";
+import { argonTheme, tabs, Images } from "../constants/";
 const { width } = Dimensions.get('screen');
 const { height } = Dimensions.get('screen');
 
-class BookingDetail extends React.Component {
+class News extends React.Component {
   state = {
     position: 0,
     interval: null,
@@ -36,12 +36,12 @@ class BookingDetail extends React.Component {
     clearInterval(this.state.interval);
   }
 
-  renderPending = () => {
+  renderNews = () => {
     return (
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.articles}>
-        
+
         <Block flex style={{ backgroundColor: argonTheme.COLORS.WHITE }}>
           <Block style={styles.header}>
             <Block left styles={styles.left}>
@@ -51,46 +51,53 @@ class BookingDetail extends React.Component {
                 style={{ marginBottom: theme.SIZES.BASE / 2 }}
                 color={argonTheme.COLORS.PRIMARY}
               >
-                ĐẶT SÂN ĐANG CHỜ
+                TIN TỨC - KHUYẾN MÃI
               </Text>
             </Block>
           </Block>
         </Block>
-        <Book item={articles.home[0]} horizontal />
+        <Block left style={{ marginRight: 10 }}>
+          <Block row style={styles.label}>
+            <Icon
+              name="whatshot"
+              family="material"
+              size={20}
+              color={argonTheme.COLORS.ERROR}
+              style={{ marginRight: 5 }}
+            />
+            <Text size={16}>WEEKDAY20: giảm giá 20k/1h trước 16h các ngày từ thứ Hai đến thứ Sáu</Text>
+          </Block>
+          <Block style={styles.label}>
+            <Text size={16}>Áp dụng cho các sân: Sân SCSC Chảo Lửa, Q. Tân Bình</Text>
+          </Block>
+
+        </Block>
+        <Block left style={{ marginRight: 10, marginTop: 10 }}>
+          <Block row style={styles.label}>
+            <Icon
+              name="whatshot"
+              family="material"
+              size={20}
+              color={argonTheme.COLORS.ERROR}
+              style={{ marginRight: 5 }}
+            />
+            <Text size={16}>WEEKDAY30: giảm giá 30k/1h trước 16h các ngày từ thứ Hai đến thứ Sáu</Text>
+          </Block>
+          <Block style={styles.label}>
+            <Text size={16}>Áp dụng cho các sân: Sân Thăng Long, Q.Tân Bình</Text>
+          </Block>
+
+        </Block>
       </ScrollView>
     )
   }
 
-  renderHistory = () => {
-    return (
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.articles}>
-        <Block flex style={{ backgroundColor: argonTheme.COLORS.WHITE }}>
-          <Block style={styles.header}>
-            <Block left styles={styles.left}>
-              <Text
-                h5
-                bold
-                style={{ marginBottom: theme.SIZES.BASE / 2 }}
-                color={argonTheme.COLORS.PRIMARY}
-              >
-                LỊCH SỬ ĐÃ ĐẶT
-              </Text>
-            </Block>
-          </Block>
-          <Book item={articles.home[0]} horizontal />
-        </Block>
-        
-      </ScrollView>
-    )
-  }
+
 
   render() {
     return (
       <Block flex center style={styles.home}>
-        {this.renderPending()}
-        {this.renderHistory()}
+        {this.renderNews()}
       </Block>
     );
   }
@@ -99,6 +106,7 @@ class BookingDetail extends React.Component {
 const styles = StyleSheet.create({
   home: {
     width: width,
+    paddingHorizontal: theme.SIZES.BASE / 2
   },
   articles: {
     width: width - theme.SIZES.BASE * 2,
@@ -131,4 +139,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default BookingDetail;
+export default News;

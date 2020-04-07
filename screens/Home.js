@@ -61,7 +61,7 @@ class Home extends React.Component {
                 style={{ marginBottom: theme.SIZES.BASE / 2 }}
                 color={argonTheme.COLORS.PRIMARY}
               >
-                SAN BONG GAN DAY
+                SÂN BÓNG GẦN ĐÂY
               </Text>
             </Block>
             <Block right style={styles.right}>
@@ -71,11 +71,11 @@ class Home extends React.Component {
             </Block>
           </Block>
           <ScrollView horizontal>
-            <Card item={articles[4]}  />
-            <Card item={articles[4]}  />
-            <Card item={articles[4]}  />
-            <Card item={articles[4]}  />
-            <Card item={articles[4]}  />
+            <Card item={articles.home[0]}  />
+            <Card item={articles.home[0]}  />
+            <Card item={articles.home[0]}  />
+            <Card item={articles.home[0]}  />
+            <Card item={articles.home[0]}  />
           </ScrollView>
         </Block>
 
@@ -90,19 +90,19 @@ class Home extends React.Component {
                 style={{ marginBottom: theme.SIZES.BASE / 2 }}
                 color={argonTheme.COLORS.PRIMARY}
               >
-                SÂN BÓNG GIAM GIA
+                SÂN BÓNG GIẢM GIÁ
               </Text>
             </Block>
             <Block right style={styles.right}>
-              <Text color={argonTheme.COLORS.PRIMARY} italic>Xem thêm...</Text>
+              {/* <Text color={argonTheme.COLORS.PRIMARY} italic>Xem thêm...</Text> */}
             </Block>
           </Block>
           <ScrollView horizontal>
-            <Card item={articles[4]} full />
-            <Card item={articles[4]} full />
-            <Card item={articles[4]} full />
-            <Card item={articles[4]} full />
-            <Card item={articles[4]} full />
+            <Card item={articles.home[0]} full />
+            <Card item={articles.home[0]} full />
+            <Card item={articles.home[0]} full />
+            <Card item={articles.home[0]} full />
+            <Card item={articles.home[0]} full />
           </ScrollView>
         </Block>
         <Block style={{ marginVertical: 10, borderColor: "rgba(0,0,0,0.2)", width: '100%', borderWidth: StyleSheet.hairlineWidth }} />
@@ -120,7 +120,7 @@ class Home extends React.Component {
               {/* <Text>Xem thêm...</Text> */}
             </Block>
             <Block right style={styles.right}>
-              <Text color={argonTheme.COLORS.PRIMARY} italic>Xem thêm...</Text>
+              {/* <Text color={argonTheme.COLORS.PRIMARY} italic>Xem thêm...</Text> */}
             </Block>
           </Block>
           <ScrollView showsHorizontalScrollIndicator={false} horizontal>
@@ -130,11 +130,11 @@ class Home extends React.Component {
             <Card item={articles[2]} />
           </Block> */}
             {/* <Card item={articles[3]} horizontal /> */}
-            <Card item={articles[4]} full />
-            <Card item={articles[4]} full />
-            <Card item={articles[4]} full />
-            <Card item={articles[4]} full />
-            <Card item={articles[4]} full />
+            <Card item={articles.home[0]} full />
+            <Card item={articles.home[0]} full />
+            <Card item={articles.home[0]} full />
+            <Card item={articles.home[0]} full />
+            <Card item={articles.home[0]} full />
           </ScrollView>
         </Block>
       </ScrollView>

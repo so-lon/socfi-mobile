@@ -19,6 +19,15 @@ class DrawerItem extends React.Component {
             color={focused ? "white" : argonTheme.COLORS.PRIMARY}
           />
         );
+        case "KHUYẾN MÃI":
+        return (
+          <Icon
+            name="newspaper-o"
+            family="font-awesome"
+            size={14}
+            color={focused ? "white" : argonTheme.COLORS.PRIMARY}
+          />
+        );
       case "THÔNG TIN ĐẶT SÂN":
         return (
           <Icon

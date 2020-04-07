@@ -9,32 +9,6 @@ const { width } = Dimensions.get('screen');
 const { height } = Dimensions.get('screen');
 
 class BookingHistory extends React.Component {
-  state = {
-    position: 0,
-    interval: null,
-    dataSource: [
-      { 'url': 'http://placeimg.com/640/480/any' },
-      { 'url': 'http://placeimg.com/640/481/any' },
-      { 'url': 'http://placeimg.com/640/482/any' },
-      { 'url': 'http://placeimg.com/640/483/any' },
-      { 'url': 'http://placeimg.com/640/484/any' },
-      { 'url': 'http://placeimg.com/640/485/any' }
-    ]
-  }
-
-  componentWillMount() {
-    this.setState({
-      interval: setInterval(() => {
-        this.setState({
-          position: this.state.position === this.state.dataSource.length ? 0 : this.state.position + 1
-        });
-      }, 3000)
-    });
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.state.interval);
-  }
 
   renderPending = () => {
     return (
@@ -56,7 +30,7 @@ class BookingHistory extends React.Component {
             </Block>
           </Block>
         </Block>
-        <Book item={articles[4]} horizontal />
+        <Book item={articles.booking[0]} horizontal />
       </ScrollView>
     )
   }
@@ -79,7 +53,7 @@ class BookingHistory extends React.Component {
               </Text>
             </Block>
           </Block>
-          <Book item={articles[4]} horizontal />
+          <Book item={articles.booking[1]} horizontal />
         </Block>
         
       </ScrollView>

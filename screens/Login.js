@@ -65,7 +65,7 @@ class Login extends React.Component {
                   <Text color="#8898AA" size={12}>
                     hoặc đăng nhập bằng tài khoản
                   </Text>
-                  <Image source={Images.SocfiLogo} style={{marginVertical: 10,height: 100, width: width - 150}}/>
+                  <Image source={Images.SocfiLogo} style={{marginVertical: 10,height: 80, width: width - 200}}/>
                 </Block>
                 <Block flex center>
                   <KeyboardAvoidingView
