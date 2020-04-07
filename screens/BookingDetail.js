@@ -56,7 +56,7 @@ class BookingDetail extends React.Component {
             </Block>
           </Block>
         </Block>
-        <Book item={articles[4]} horizontal />
+        <Book item={articles.home[0]} horizontal />
       </ScrollView>
     )
   }
@@ -79,7 +79,7 @@ class BookingDetail extends React.Component {
               </Text>
             </Block>
           </Block>
-          <Book item={articles[4]} horizontal />
+          <Book item={articles.home[0]} horizontal />
         </Block>
         
       </ScrollView>

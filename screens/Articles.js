@@ -94,7 +94,7 @@ class Articles extends React.Component {
               />
               <Card item={articles[2]} />
             </Block>
-            <Card item={articles[4]} full />
+            <Card item={articles.home[0]} full />
             <Block flex card shadow style={styles.category}>
               <ImageBackground
                 source={{ uri: Images.Products["View article"] }}
