@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Dimensions, ScrollView } from 'react-native';
-import { Block, theme, Text, Card as GalioCard } from 'galio-framework';
+import { Block, theme, Text, Card as GalioCard, Icon } from 'galio-framework';
 import Slideshow from 'react-native-image-slider-show';
 import { Card, Button } from '../components';
 import articles from '../constants/articles';
@@ -50,40 +50,45 @@ class Home extends React.Component {
           />
         </Block>
 
-        <Block flex>
-          <Block style={styles.header}>
-            <Block left styles={styles.left}>
-              <Text
-                h4
-                bold
-                color={argonTheme.COLORS.DEFAULT}
-              >
-                Sân bóng nổi bật
-              </Text>
-              <Block left style={styles.line}></Block>
-            </Block>
-          </Block>
+        <Block flex style={{marginTop: height * 0.05}} style={{marginTop: height * 0.05}}>
+          <Text
+            h4
+            bold
+            color={argonTheme.COLORS.DEFAULT}
+          >
+            Sân bóng gần đây
+          </Text>
+          <Block left style={styles.line}></Block>
           <ScrollView horizontal>
             <Card item={articles.home[0]}/>
             <Card item={articles.home[1]}/>
             <Card item={articles.home[2]}/>
             <Card item={articles.home[3]}/>
+            <Block center>
+              <TouchableOpacity onPress={() => this.props.navigation.navigate('NearbyStadium')}>
+                <Text size={48} color={argonTheme.COLORS.PRIMARY}>
+                  <Icon
+                    name="play-circle-filled"
+                    family="material"
+                    size={48}
+                    color={argonTheme.COLORS.PRIMARY}
+                    style={{ marginVertical: '1%' }}
+                  />
+                </Text>
+              </TouchableOpacity>
+            </Block>
           </ScrollView>
         </Block>
 
-        <Block flex>
-          <Block style={styles.header}>
-            <Block left styles={styles.left}>
-              <Text
-                h4
-                bold
-                color={argonTheme.COLORS.DEFAULT}
-              >
-                Mã khuyến mãi
-              </Text>
-              <Block left style={styles.line}></Block>
-            </Block>
-          </Block>
+        <Block flex style={{marginTop: height * 0.05}}>
+          <Text
+            h4
+            bold
+            color={argonTheme.COLORS.DEFAULT}
+          >
+            Mã khuyến mãi
+          </Text>
+          <Block left style={styles.line}></Block>
           <ScrollView horizontal>
             <Block style={[styles.promotion, {backgroundColor: argonTheme.COLORS.INFO}]}>
               <Text bold color='white'>Nhập BUOITRUA</Text>
@@ -100,24 +105,50 @@ class Home extends React.Component {
           </ScrollView>
         </Block>
 
-        <Block flex>
-          <Block style={styles.header}>
-            <Block left styles={styles.left}>
-              <Text
-                h4
-                bold
-                color={argonTheme.COLORS.DEFAULT}
-              >
-                Các khuyến mãi HOT!
-              </Text>
-              <Block left style={styles.line}></Block>
-            </Block>
-          </Block>
+        <Block flex style={{marginTop: height * 0.05}}>
+          <Text
+            h4
+            bold
+            color={argonTheme.COLORS.DEFAULT}
+          >
+            Các khuyến mãi HOT!
+          </Text>
+          <Block left style={styles.line}></Block>
           <ScrollView horizontal>
             <CardBorderless item={articles.promotion[0]}/>
             <CardBorderless item={articles.promotion[1]}/>
             <CardBorderless item={articles.promotion[2]}/>
           </ScrollView>
+        </Block>
+
+        <Block flex style={{marginTop: height * 0.05}}>
+          <Text
+            h4
+            bold
+            color={argonTheme.COLORS.DEFAULT}
+          >
+            Tất cả sân bóng
+          </Text>
+          <Block left style={styles.line}></Block>
+          <Block>
+            <Block style={{flexDirection: 'row'}}>
+              <Card item={articles.home[0]}/>
+              <Card item={articles.home[1]}/>
+            </Block>
+            <Block style={{flexDirection: 'row'}}>
+              <Card item={articles.home[2]}/>
+              <Card item={articles.home[3]}/>
+            </Block>
+            <Block style={{flexDirection: 'row'}}>
+              <Card item={articles.home[0]}/>
+              <Card item={articles.home[2]}/>
+            </Block>
+            <Button color='primary'>
+              <Text bold size={18} color='white'>
+                XEM THÊM
+              </Text>
+            </Button>
+          </Block>
         </Block>
 
       </ScrollView>
@@ -178,10 +209,10 @@ const styles = StyleSheet.create({
     height: height * 0.1,
     justifyContent: 'center',
     padding: 25,
-    marginTop: height * 0.03,
+    marginVertical: height * 0.03,
     marginRight: 20,
     borderRadius: 40,
-  }
+  },
 });
 
 export default Home;
