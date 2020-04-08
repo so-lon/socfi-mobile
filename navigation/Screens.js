@@ -23,6 +23,8 @@ import BookingHistory from '../screens/BookingHistory';
 import BookingDetail from '../screens/BookingDetail';
 import NearbyStadium from '../screens/NearbyStadium';
 import News from '../screens/News';
+import Reason from '../screens/Reason';
+import Feedback from '../screens/Feedback';
 // drawer
 import CustomDrawerContent from "./Menu";
 
@@ -234,6 +236,7 @@ function NewsStack(props) {
           cardStyle: { backgroundColor: "#F8F9FE" }
         }}
       />
+      
     </Stack.Navigator>
   );
 }
@@ -252,6 +255,44 @@ function BookingHistoryStack(props) {
               // options
               // optionLeft="SAN BONG"
               // optionRight="TIN TUC"
+              navigation={navigation}
+              scene={scene}
+            />
+          ),
+          cardStyle: { backgroundColor: "#F8F9FE" }
+        }}
+      />
+      <Stack.Screen
+        name="LÝ DO"
+        component={Reason}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              title="HUỶ LỊCH"
+              // search
+              // options
+              // optionLeft="SAN BONG"
+              // optionRight="TIN TUC"
+              back
+              navigation={navigation}
+              scene={scene}
+            />
+          ),
+          cardStyle: { backgroundColor: "#F8F9FE" }
+        }}
+      />
+      <Stack.Screen
+        name="ĐÁNH GIÁ"
+        component={Feedback}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              title="ĐÁNH GIÁ"
+              // search
+              // options
+              // optionLeft="SAN BONG"
+              // optionRight="TIN TUC"
+              back
               navigation={navigation}
               scene={scene}
             />
