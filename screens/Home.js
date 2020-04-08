@@ -1,11 +1,12 @@
 import React from 'react';
 import { StyleSheet, Dimensions, ScrollView } from 'react-native';
-import { Block, theme, Text } from 'galio-framework';
+import { Block, theme, Text, Card as GalioCard } from 'galio-framework';
 import Slideshow from 'react-native-image-slider-show';
-import { Card } from '../components';
+import { Card, Button } from '../components';
 import articles from '../constants/articles';
 import { argonTheme, tabs, Images } from "../constants/";
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import CardBorderless from '../components/CardBorderless';
 const { width } = Dimensions.get('screen');
 const { height } = Dimensions.get('screen');
 
@@ -18,9 +19,6 @@ class Home extends React.Component {
 
       { 'url': 'https://cdn.discordapp.com/attachments/682134033739808891/696766019641016341/2_2.jpg' },
       { 'url': 'https://cdn.discordapp.com/attachments/682134033739808891/696765989559336960/5_1.jpg' },
-      // { 'url': 'http://placeimg.com/640/483/any' },
-      // { 'url': 'http://placeimg.com/640/484/any' },
-      // { 'url': 'http://placeimg.com/640/485/any' }
     ]
   }
 
@@ -56,84 +54,72 @@ class Home extends React.Component {
           <Block style={styles.header}>
             <Block left styles={styles.left}>
               <Text
-                h5
+                h4
                 bold
-                style={{ marginBottom: theme.SIZES.BASE / 2 }}
-                color={argonTheme.COLORS.PRIMARY}
+                color={argonTheme.COLORS.DEFAULT}
               >
-                SÂN BÓNG GẦN ĐÂY
+                Sân bóng nổi bật
               </Text>
-            </Block>
-            <Block right style={styles.right}>
-              <TouchableOpacity onPress={() => this.props.navigation.navigate('NearbyStadium')}>
-                <Text color={argonTheme.COLORS.PRIMARY} italic>Xem thêm...</Text>
-              </TouchableOpacity>
+              <Block left style={styles.line}></Block>
             </Block>
           </Block>
           <ScrollView horizontal>
-            <Card item={articles.home[0]}  />
-            <Card item={articles.home[1]}  />
-            <Card item={articles.home[2]}  />
-            <Card item={articles.home[3]}  />
+            <Card item={articles.home[0]}/>
+            <Card item={articles.home[1]}/>
+            <Card item={articles.home[2]}/>
+            <Card item={articles.home[3]}/>
           </ScrollView>
         </Block>
 
-        
-        <Block style={{ marginVertical: 10, borderColor: "rgba(0,0,0,0.2)", width: '100%', borderWidth: StyleSheet.hairlineWidth }} />
         <Block flex>
           <Block style={styles.header}>
             <Block left styles={styles.left}>
               <Text
-                h5
+                h4
                 bold
-                style={{ marginBottom: theme.SIZES.BASE / 2 }}
-                color={argonTheme.COLORS.PRIMARY}
+                color={argonTheme.COLORS.DEFAULT}
               >
-                SÂN BÓNG GIẢM GIÁ
+                Mã khuyến mãi
               </Text>
-            </Block>
-            <Block right style={styles.right}>
-              {/* <Text color={argonTheme.COLORS.PRIMARY} italic>Xem thêm...</Text> */}
+              <Block left style={styles.line}></Block>
             </Block>
           </Block>
           <ScrollView horizontal>
-            <Card item={articles.home[1]} full />
-            <Card item={articles.home[3]} full />
-            <Card item={articles.home[0]} full />
-            <Card item={articles.home[2]} full />
+            <Block style={[styles.promotion, {backgroundColor: argonTheme.COLORS.INFO}]}>
+              <Text bold color='white'>Nhập BUOITRUA</Text>
+              <Text bold color='white'>30% Off | 10h - 14h</Text>
+            </Block>
+            <Block style={[styles.promotion, {backgroundColor: argonTheme.COLORS.WARNING}]}>
+              <Text bold color='white'>Nhập COVID19</Text>
+              <Text bold color='white'>99% Off | 15h - 17h</Text>
+            </Block>
+            <Block style={[styles.promotion, {backgroundColor: argonTheme.COLORS.DEFAULT}]}>
+              <Text bold color='white'>Nhập KHUYA</Text>
+              <Text bold color='white'>20% Off | 0h - 4h</Text>
+            </Block>
           </ScrollView>
         </Block>
-        <Block style={{ marginVertical: 10, borderColor: "rgba(0,0,0,0.2)", width: '100%', borderWidth: StyleSheet.hairlineWidth }} />
-        <Block flex style={{ backgroundColor: argonTheme.COLORS.WHITE }}>
+
+        <Block flex>
           <Block style={styles.header}>
             <Block left styles={styles.left}>
               <Text
-                h5
+                h4
                 bold
-                style={{ marginBottom: theme.SIZES.BASE / 2 }}
-                color={argonTheme.COLORS.PRIMARY}
+                color={argonTheme.COLORS.DEFAULT}
               >
-                SÂN BÓNG NỔI BẬT
+                Các khuyến mãi HOT!
               </Text>
-              {/* <Text>Xem thêm...</Text> */}
-            </Block>
-            <Block right style={styles.right}>
-              {/* <Text color={argonTheme.COLORS.PRIMARY} italic>Xem thêm...</Text> */}
+              <Block left style={styles.line}></Block>
             </Block>
           </Block>
-          <ScrollView showsHorizontalScrollIndicator={false} horizontal>
-            {/* <Card item={articles[0]} horizontal />
-          <Block flex row>
-            <Card item={articles[1]} style={{ marginRight: theme.SIZES.BASE }} />
-            <Card item={articles[2]} />
-          </Block> */}
-            {/* <Card item={articles[3]} horizontal /> */}
-            <Card item={articles.home[3]} full />
-            <Card item={articles.home[0]} full />
-            <Card item={articles.home[2]} full />
-            <Card item={articles.home[1]} full />
+          <ScrollView horizontal>
+            <CardBorderless item={articles.promotion[0]}/>
+            <CardBorderless item={articles.promotion[1]}/>
+            <CardBorderless item={articles.promotion[2]}/>
           </ScrollView>
         </Block>
+
       </ScrollView>
     )
   }
@@ -157,12 +143,13 @@ const styles = StyleSheet.create({
   },
   header: {
     width: 'auto',
-    height: theme.SIZES.BASE * 4.125,
+    // height: theme.SIZES.BASE * 4.125,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: theme.COLORS.WHITE,
+    // backgroundColor: theme.COLORS.WHITE,
     paddingVertical: theme.SIZES.BASE,
+    marginTop: '10%',
   },
   left: {
     paddingVertical: 12,
@@ -180,6 +167,21 @@ const styles = StyleSheet.create({
     marginLeft: 42,
     // marginRight: theme.SIZES.BASE,
   },
+  line: {
+    width: width * 0.3,
+    height: 10,
+    backgroundColor: argonTheme.COLORS.PRIMARY,
+    marginVertical: '2%',
+  },
+  promotion: {
+    width: width * 0.5,
+    height: height * 0.1,
+    justifyContent: 'center',
+    padding: 25,
+    marginTop: height * 0.03,
+    marginRight: 20,
+    borderRadius: 40,
+  }
 });
 
 export default Home;

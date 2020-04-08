@@ -15,14 +15,13 @@ class Card extends React.Component {
       full ? styles.fullImage : styles.horizontalImage,
       imageStyle
     ];
-    const cardContainer = [horizontal ? styles.cardHorizontal : styles.card, styles.shadow, style];
+    const cardContainer = [horizontal ? styles.cardHorizontal : styles.card, style];
     const imgContainer = [styles.imageContainer,
       horizontal ? styles.horizontalStyles : styles.verticalStyles,
-      styles.shadow
     ];
 
     return (
-      <Block row={horizontal} card flex style={cardContainer}>
+      <Block row={horizontal} flex style={cardContainer}>
         <TouchableWithoutFeedback onPress={() => navigation.navigate('Stadium')}>
           <Block flex style={imgContainer}>
             <Image source={{uri: item.image}} style={imageStyles} />
@@ -30,6 +29,16 @@ class Card extends React.Component {
         </TouchableWithoutFeedback>
         <TouchableWithoutFeedback onPress={() => navigation.navigate('Stadium')}>
           <Block left flex space="between" style={styles.cardDescription}>
+            <Text bold size={18} color={argonTheme.COLORS.WARNING} style={styles.cardTitle}>
+              <Icon
+                name="local-offer"
+                family="material"
+                size={14}
+                color={argonTheme.COLORS.WARNING}
+                style={{ marginVertical: '1%' }}
+              />
+              {item.value}
+            </Text>
             <Text bold size={18} style={styles.cardTitle}>{item.title}</Text>
             <Text size={12} style={styles.cardTitle}>
               <Icon
@@ -41,13 +50,16 @@ class Card extends React.Component {
               />
               {item.address}
             </Text>
-            <StarRating
-              disabled={true}
-              maxStars={5}
-              rating={item.star}
-              starSize={12}
-              fullStarColor={argonTheme.COLORS.STAR}
-            />
+            <Block flex style={{flexDirection: 'row'}}>
+              <StarRating
+                disabled={true}
+                maxStars={5}
+                rating={item.star}
+                starSize={12}
+                fullStarColor={argonTheme.COLORS.STAR}
+              />
+              <Text size={12} style={[styles.cardTitle]}> / {item.booking} lượt đặt</Text>
+            </Block>
           </Block>
         </TouchableWithoutFeedback>
       </Block>
@@ -112,13 +124,6 @@ const styles = StyleSheet.create({
   },
   fullImage: {
     height: 130
-  },
-  shadow: {
-    shadowColor: theme.COLORS.BLACK,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 4,
-    shadowOpacity: 0.1,
-    elevation: 2,
   },
 });
 

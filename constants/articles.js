@@ -4,8 +4,8 @@ export default {
       title: 'SÂN SCSC CHẢO LỬA',
       image: 'https://media.discordapp.net/attachments/682134033739808891/697193794621145178/1.jpg?width=500&height=333',
       address: '35 Phan Thúc Duyện, Q.Tân Bình',
-      dayPrice: '150k - 200k',
-      nightPrice: '300k - 350k',
+      // dayPrice: '150k - 200k',
+      // nightPrice: '300k - 350k',
       cta: 'View article',
       horizontal: true,
       datetime: '17:30 ngày 08/04/2020',
@@ -82,5 +82,32 @@ export default {
       price: '350.000VNĐ',
       status: 'Đã diễn ra',
     }
+  ],
+  promotion: [
+    {
+      title     : 'SÂN FPTU: Khuyến mãi 40% cho mọi khung giờ từ THỨ 2 đến THỨ 6',
+      image     : 'https://cdn.discordapp.com/attachments/682134033739808891/696765994885971998/5.jpg',
+      address   : 'Khu Công Nghệ Cao, Long Thạnh Mỹ, Quận 9',
+      horizontal: true,
+      value     : '40%',
+      star      : 5,
+      booking   : 30,
+    },{
+      title     : 'SÂN CCX: Giảm trực tiếp 99K cho khung giờ 10h-14h thứ 4 mỗi tuần',
+      image     : 'https://cdn.discordapp.com/attachments/682134033739808891/696765989559336960/5_1.jpg',
+      address   : 'Khu Công Nghệ Cao, Long Thạnh Mỹ, Quận 9',
+      value     : '99K',
+      horizontal: true,
+      star      : 5,
+      booking   : 17,
+    },{
+      title     : 'SÂN THĂNG LONG: Mừng khai trương giảm giá 15% từ ngày 10/4-17/4',
+      image     : 'https://cdn.discordapp.com/attachments/682134033739808891/696766019641016341/2_2.jpg',
+      address   : '2 Thăng Long, Q.Tân Bình',
+      value     : '15%',
+      horizontal: true,
+      star      : 5,
+      booking   : 45,
+    },
   ]
 };
