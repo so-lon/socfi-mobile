@@ -5,17 +5,70 @@ import {
   Dimensions,
   StatusBar,
   KeyboardAvoidingView,
-  Image
+  Image,
+  Linking,
+  Alert
 } from "react-native";
 import { Block, Checkbox, Text, theme } from "galio-framework";
 
 import { Button, Icon, Input } from "../components";
 import { Images, argonTheme } from "../constants";
 import { ScrollView } from "react-native-gesture-handler";
+import * as Facebook from 'expo-facebook';
+import * as Google from 'expo-google-app-auth';
+import Expo from "expo";
 
 const { width, height } = Dimensions.get("screen");
 
 class Login extends React.Component {
+
+  logInFacebook = async () => {
+    try {
+      await Facebook.initializeAsync('480545299270145');
+      const {
+        type,
+        token,
+        expires,
+        permissions,
+        declinedPermissions,
+      } = await Facebook.logInWithReadPermissionsAsync({
+        permissions: ['public_profile', 'email'],
+      });
+      if (type === 'success') {
+        // Get the user's name using Facebook's Graph API
+        const response = await fetch(`https://graph.facebook.com/me?fields=id,email,name&access_token=${token}`);
+        // Alert.alert('Logged in!', `Hi ${(await response.json()).name}!`);
+        console.log(await response.json());
+      } else {
+        // type === 'cancel'
+      }
+    } catch ({ message }) {
+      alert(`Facebook Login Error: ${message}`);
+    }
+  }
+
+  logInGoogle = async () => {
+    try {
+      const { type, accessToken, user } = await Google.logInAsync({
+        androidClientId: "221974845316-v0tamam2i75661a90r3c1ksp41rrr5h0.apps.googleusercontent.com",
+        //iosClientId: YOUR_CLIENT_ID_HERE,  <-- if you use iOS
+        // scopes: ["profile", "email"]
+      })
+      if (type === "success") {
+        console.log(user);
+        // this.setState({
+        //   signedIn: true,
+        //   name: result.user.name,
+        //   photoUrl: result.user.photoUrl
+        // })
+      } else {
+        console.log("cancelled")
+      }
+    } catch (e) {
+      console.log("error", e)
+    }
+  }
+
   render() {
     const { navigation } = this.props;
     return (
@@ -32,7 +85,9 @@ class Login extends React.Component {
                   Đăng nhập bằng
                 </Text>
                 <Block row style={{ marginTop: theme.SIZES.BASE }}>
-                  <Button style={{ ...styles.socialButtons, marginRight: 30 }}>
+                  <Button
+                    onPress={() => this.logInFacebook()}
+                    style={{ ...styles.socialButtons, marginRight: 30 }}>
                     <Block row>
                       <Icon
                         name="logo-facebook"
@@ -44,7 +99,9 @@ class Login extends React.Component {
                       <Text style={styles.socialTextButtons}>FACEBOOK</Text>
                     </Block>
                   </Button>
-                  <Button style={styles.socialButtons}>
+                  <Button
+                    onPress={() => this.logInGoogle()}
+                   style={styles.socialButtons}>
                     <Block row>
                       <Icon
                         name="logo-google"
@@ -59,21 +116,21 @@ class Login extends React.Component {
                 </Block>
               </Block>
 
-              <Block flex style={{marginTop: 50}}>
+              <Block flex style={{ marginTop: 50 }}>
                 <ScrollView>
-                <Block flex={0.17} middle style={{marginBottom: 30}}>
-                  <Text color="#8898AA" size={12}>
-                    hoặc đăng nhập bằng tài khoản
+                  <Block flex={0.17} middle style={{ marginBottom: 30 }}>
+                    <Text color="#8898AA" size={12}>
+                      hoặc đăng nhập bằng tài khoản
                   </Text>
-                  <Image source={Images.SocfiLogo} style={{marginVertical: 10,height: 80, width: width - 200}}/>
-                </Block>
-                <Block flex center>
-                  <KeyboardAvoidingView
-                    style={{ flex: 1 }}
-                    behavior="padding"
-                    enabled
-                  >
-                    {/* <Block width={width * 0.8} style={{ marginBottom: 15 }}>
+                    <Image source={Images.SocfiLogo} style={{ marginVertical: 10, height: 80, width: width - 200 }} />
+                  </Block>
+                  <Block flex center>
+                    <KeyboardAvoidingView
+                      style={{ flex: 1 }}
+                      behavior="padding"
+                      enabled
+                    >
+                      {/* <Block width={width * 0.8} style={{ marginBottom: 15 }}>
                       <Input
                         borderless
                         placeholder="Name"
@@ -88,37 +145,37 @@ class Login extends React.Component {
                         }
                       />
                     </Block> */}
-                    <Block width={width * 0.8} style={{ marginBottom: 15 }}>
-                      <Input
-                        borderless
-                        placeholder="Tài khoản"
-                        iconContent={
-                          <Icon
-                            size={16}
-                            color={argonTheme.COLORS.ICON}
-                            name="account-circle"
-                            family="material_community"
-                            style={styles.inputIcons}
-                          />
-                        }
-                      />
-                    </Block>
-                    <Block width={width * 0.8}>
-                      <Input
-                        password
-                        borderless
-                        placeholder="Mật khẩu"
-                        iconContent={
-                          <Icon
-                            size={16}
-                            color={argonTheme.COLORS.ICON}
-                            name="padlock-unlocked"
-                            family="ArgonExtra"
-                            style={styles.inputIcons}
-                          />
-                        }
-                      />
-                      {/* <Block row style={styles.passwordCheck}>
+                      <Block width={width * 0.8} style={{ marginBottom: 15 }}>
+                        <Input
+                          borderless
+                          placeholder="Tài khoản"
+                          iconContent={
+                            <Icon
+                              size={16}
+                              color={argonTheme.COLORS.ICON}
+                              name="account-circle"
+                              family="material_community"
+                              style={styles.inputIcons}
+                            />
+                          }
+                        />
+                      </Block>
+                      <Block width={width * 0.8}>
+                        <Input
+                          password
+                          borderless
+                          placeholder="Mật khẩu"
+                          iconContent={
+                            <Icon
+                              size={16}
+                              color={argonTheme.COLORS.ICON}
+                              name="padlock-unlocked"
+                              family="ArgonExtra"
+                              style={styles.inputIcons}
+                            />
+                          }
+                        />
+                        {/* <Block row style={styles.passwordCheck}>
                         <Text size={12} color={argonTheme.COLORS.MUTED}>
                           password strength:
                         </Text>
@@ -127,8 +184,8 @@ class Login extends React.Component {
                           strong
                         </Text>
                       </Block> */}
-                    </Block>
-                    {/* <Block row width={width * 0.75}>
+                      </Block>
+                      {/* <Block row width={width * 0.75}>
                       <Checkbox
                         checkboxStyle={{
                           borderWidth: 3
@@ -147,27 +204,27 @@ class Login extends React.Component {
                         Privacy Policy
                       </Button>
                     </Block> */}
-                    <Block middle>
-                      <Button color="primary" onPress={() => navigation.navigate("App")} style={styles.createButton}>
-                        <Text bold size={14} color={argonTheme.COLORS.WHITE}>
-                          ĐĂNG NHẬP
+                      <Block middle>
+                        <Button color="primary" onPress={() => navigation.navigate("App")} style={styles.createButton}>
+                          <Text bold size={14} color={argonTheme.COLORS.WHITE}>
+                            ĐĂNG NHẬP
                         </Text>
-                      </Button>
-                    </Block>
-                    <Block row style={{ marginTop: theme.SIZES.BASE }}>
-                      <Block row style={styles.passwordCheck}>
-                        <Text size={12} color={argonTheme.COLORS.DEFAULT} onPress={() => navigation.navigate("Register")}>
-                          Đăng Ký Tài Khoản
-                        </Text>
+                        </Button>
                       </Block>
-                      <Block row style={styles.passwordCheck}>
-                        <Text size={12} color={argonTheme.COLORS.DEFAULT} onPress={() => navigation.navigate("ForgotPassword")}>
-                          Quên Mật Khẩu
+                      <Block row style={{ marginTop: theme.SIZES.BASE }}>
+                        <Block row style={styles.passwordCheck}>
+                          <Text size={12} color={argonTheme.COLORS.DEFAULT} onPress={() => navigation.navigate("Register")}>
+                            Đăng Ký Tài Khoản
                         </Text>
+                        </Block>
+                        <Block row style={styles.passwordCheck}>
+                          <Text size={12} color={argonTheme.COLORS.DEFAULT} onPress={() => navigation.navigate("ForgotPassword")}>
+                            Quên Mật Khẩu
+                        </Text>
+                        </Block>
                       </Block>
-                    </Block>
-                  </KeyboardAvoidingView>
-                </Block>
+                    </KeyboardAvoidingView>
+                  </Block>
                 </ScrollView>
               </Block>
             </Block>
@@ -225,7 +282,7 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     paddingTop: 13,
     paddingBottom: 30,
-    marginLeft: 25 
+    marginLeft: 25
   },
   createButton: {
     width: width * 0.5,
