@@ -9,96 +9,12 @@ import StarRating from 'react-native-star-rating';
 const { width } = Dimensions.get('screen');
 const { height } = Dimensions.get('screen');
 
-const SECTIONS = [
-  {
-    title: 'Thứ Hai',
-    content: [
-      'Sân 5 người: 08:00 - 17:30: 150.000VNĐ/h',
-      'Sân 5 người: 17:30 - 24:00: 300.000VNĐ/h',
-      'Sân 7 người: 19:00 - 21:00: 1.000.000VNĐ/h',
-    ]
-  },
-  {
-    title: 'Thứ Ba',
-    content: [
-      'Sân 5 người: 08:00 - 17:30: 150.000VNĐ/h',
-      'Sân 5 người: 17:30 - 24:00: 300.000VNĐ/h',
-      'Sân 7 người: 19:00 - 21:00: 1.000.000VNĐ/h',
-    ]
-  },
-  {
-    title: 'Thứ Tư',
-    content: [
-      'Sân 5 người: 08:00 - 17:30: 150.000VNĐ/h',
-      'Sân 5 người: 17:30 - 24:00: 300.000VNĐ/h',
-      'Sân 7 người: 19:00 - 21:00: 1.000.000VNĐ/h',
-    ]
-  },
-  {
-    title: 'Thứ Năm',
-    content: [
-      'Sân 5 người: 08:00 - 17:30: 150.000VNĐ/h',
-      'Sân 5 người: 17:30 - 24:00: 300.000VNĐ/h',
-      'Sân 7 người: 19:00 - 21:00: 1.000.000VNĐ/h',
-    ]
-  },
-  {
-    title: 'Thứ Sáu',
-    content: [
-      'Sân 5 người: 08:00 - 17:30: 150.000VNĐ/h',
-      'Sân 5 người: 17:30 - 24:00: 300.000VNĐ/h',
-      'Sân 7 người: 19:00 - 21:00: 1.000.000VNĐ/h',
-    ]
-  },
-  {
-    title: 'Thứ Bảy',
-    content: [
-      'Sân 5 người: 08:00 - 17:30: 220.000VNĐ/h',
-      'Sân 5 người: 17:30 - 24:00: 350.000VNĐ/h',
-      'Sân 7 người: 19:00 - 21:00: 1.200.000VNĐ/h',
-    ]
-  },
-  {
-    title: 'Chủ Nhật',
-    content: [
-      'Sân 5 người: 08:00 - 17:30: 220.000VNĐ/h',
-      'Sân 5 người: 17:30 - 24:00: 350.000VNĐ/h',
-      'Sân 7 người: 19:00 - 21:00: 1.200.000VNĐ/h',
-    ]
-  },
-];
 
 class Stadium extends React.Component {
   state = {
     position: 0,
     interval: null,
-    dataSource: [
-      { 'url': 'https://media.discordapp.net/attachments/682134033739808891/697193794621145178/1.jpg?width=500&height=333' },
-      { 'url': 'https://media.discordapp.net/attachments/682134033739808891/697195735912808468/4.jpeg ' },
-    ],
-    activeSections: [],
   }
-
-  _renderHeader = section => {
-    return (
-      <Block row style={styles.weekDay}>
-        <Text style={styles.headerText}>{section.title}</Text>
-        <Icon name="keyboard-arrow-down" family="material" style={{ paddingLeft: 8 }} color={argonTheme.COLORS.PRIMARY} />
-      </Block>
-    );
-  };
-
-  _renderContent = section => {
-    return (
-      <Block center>
-        {section.content.map((key, value) => <Text style={{ marginBottom: 10 }}>{key}</Text>)}
-      </Block>
-    );
-  };
-
-  _updateSections = activeSections => {
-    this.setState({ activeSections });
-  };
 
   renderArticles = () => {
     const { navigation } = this.props;
@@ -106,12 +22,8 @@ class Stadium extends React.Component {
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.articles}>
-        <Block center>
-          <Slideshow
-            dataSource={this.state.dataSource}
-            position={this.state.position}
-            onPositionChanged={position => this.setState({ position })}
-          />
+        <Block flex>
+          <Image source={{uri: 'https://cdn.discordapp.com/attachments/682134033739808891/696765994885971998/5.jpg'}} style={{height: 130}} />
         </Block>
         <Block flex>
           <Block style={[styles.header, styles.shadow]}>

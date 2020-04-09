@@ -22,12 +22,12 @@ class Card extends React.Component {
 
     return (
       <Block row={horizontal} flex style={cardContainer}>
-        <TouchableWithoutFeedback onPress={() => navigation.navigate('Stadium')}>
+        <TouchableWithoutFeedback onPress={() => navigation.navigate('Promotion')}>
           <Block flex style={imgContainer}>
             <Image source={{uri: item.image}} style={imageStyles} />
           </Block>
         </TouchableWithoutFeedback>
-        <TouchableWithoutFeedback onPress={() => navigation.navigate('Stadium')}>
+        <TouchableWithoutFeedback onPress={() => navigation.navigate('Promotion')}>
           <Block left flex space="between" style={styles.cardDescription}>
             <Text bold size={18} color={argonTheme.COLORS.ERROR} style={styles.cardTitle}>
               <Icon

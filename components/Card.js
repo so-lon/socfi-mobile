@@ -65,7 +65,7 @@ Card.propTypes = {
 
 const styles = StyleSheet.create({
   card: {
-    width: width * 0.7,
+    width: width * 0.9,
     backgroundColor: theme.COLORS.WHITE,
     marginVertical: theme.SIZES.BASE,
     marginRight: theme.SIZES.BASE,
