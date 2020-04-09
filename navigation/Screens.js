@@ -173,7 +173,7 @@ function HomeStack(props) {
         options={{
           header: ({ navigation, scene }) => (
             <Header
-              title="CHI TIẾT SÂN BÓNG"
+              title="Sân SCSC Chảo Lửa"
               back
               navigation={navigation}
               scene={scene}

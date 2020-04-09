@@ -1,73 +1,11 @@
 import React from 'react';
 import { StyleSheet, Dimensions, ScrollView, View, ToastAndroid } from 'react-native';
 import { Block, theme, Text } from 'galio-framework';
-import Slideshow from 'react-native-image-slider-show';
 import { Card, Icon, Button, Select } from '../components';
-import { Collapsible } from '../components/Collapsible'
-import articles from '../constants/articles';
 import { argonTheme, tabs, Images } from "../constants";
 const { width } = Dimensions.get('screen');
 const { height } = Dimensions.get('screen');
-import Accordion from 'react-native-collapsible/Accordion';
-import Constants from "expo-constants";
-const SECTIONS = [
-  {
-    title: 'Thứ Hai',
-    content: [
-      'Sân 5 người: 08:00 - 17:30: 150.000VNĐ/h',
-      'Sân 5 người: 17:30 - 24:00: 300.000VNĐ/h',
-      'Sân 7 người: 19:00 - 21:00: 1.000.000VNĐ/h',
-    ]
-  },
-  {
-    title: 'Thứ Ba',
-    content: [
-      'Sân 5 người: 08:00 - 17:30: 150.000VNĐ/h',
-      'Sân 5 người: 17:30 - 24:00: 300.000VNĐ/h',
-      'Sân 7 người: 19:00 - 21:00: 1.000.000VNĐ/h',
-    ]
-  },
-  {
-    title: 'Thứ Tư',
-    content: [
-      'Sân 5 người: 08:00 - 17:30: 150.000VNĐ/h',
-      'Sân 5 người: 17:30 - 24:00: 300.000VNĐ/h',
-      'Sân 7 người: 19:00 - 21:00: 1.000.000VNĐ/h',
-    ]
-  },
-  {
-    title: 'Thứ Năm',
-    content: [
-      'Sân 5 người: 08:00 - 17:30: 150.000VNĐ/h',
-      'Sân 5 người: 17:30 - 24:00: 300.000VNĐ/h',
-      'Sân 7 người: 19:00 - 21:00: 1.000.000VNĐ/h',
-    ]
-  },
-  {
-    title: 'Thứ Sáu',
-    content: [
-      'Sân 5 người: 08:00 - 17:30: 150.000VNĐ/h',
-      'Sân 5 người: 17:30 - 24:00: 300.000VNĐ/h',
-      'Sân 7 người: 19:00 - 21:00: 1.000.000VNĐ/h',
-    ]
-  },
-  {
-    title: 'Thứ Bảy',
-    content: [
-      'Sân 5 người: 08:00 - 17:30: 220.000VNĐ/h',
-      'Sân 5 người: 17:30 - 24:00: 350.000VNĐ/h',
-      'Sân 7 người: 19:00 - 21:00: 1.200.000VNĐ/h',
-    ]
-  },
-  {
-    title: 'Chủ Nhật',
-    content: [
-      'Sân 5 người: 08:00 - 17:30: 220.000VNĐ/h',
-      'Sân 5 người: 17:30 - 24:00: 350.000VNĐ/h',
-      'Sân 7 người: 19:00 - 21:00: 1.200.000VNĐ/h',
-    ]
-  },
-];
+
 class Booking extends React.Component {
   state = {
     position: 0,
@@ -82,64 +20,6 @@ class Booking extends React.Component {
     ],
     activeSections: [],
   }
-
-  // _renderSectionTitle = section => {
-  //   return (
-  //     <Block style={styles.content}>
-  //       <Text>{section.content}</Text>
-  //     </Block>
-  //   );
-  // };
-
-  _renderHeader = section => {
-    return (
-      <Block row style={styles.weekDay}>
-        <Text style={styles.headerText}>{section.title}</Text>
-        <Icon name="keyboard-arrow-down" family="material" style={{ paddingLeft: 8 }} color={argonTheme.COLORS.PRIMARY} />
-      </Block>
-    );
-  };
-
-  _renderContent = section => {
-    return (
-      <Block center>
-        {section.content.map((key, value) => <Text style={{ marginBottom: 10 }}>{key}</Text>)}
-      </Block>
-    );
-  };
-
-  _updateSections = activeSections => {
-    this.setState({ activeSections });
-  };
-
-  renderCollapsible = () => {
-    return (
-      <Block row style={{ marginBottom: 20 }}>
-        <Accordion
-          sections={SECTIONS}
-          activeSections={this.state.activeSections}
-          // renderSectionTitle={this._renderSectionTitle}
-          renderHeader={this._renderHeader}
-          renderContent={this._renderContent}
-          onChange={this._updateSections}
-          underlayColor={theme.COLORS.ACTIVE}
-        />
-      </Block>
-    );
-  }
-  // componentWillMount() {
-  //   this.setState({
-  //     interval: setInterval(() => {
-  //       this.setState({
-  //         position: this.state.position === this.state.dataSource.length ? 0 : this.state.position + 1
-  //       });
-  //     }, 3000)
-  //   });
-  // }
-
-  // componentWillUnmount() {
-  //   clearInterval(this.state.interval);
-  // }
 
   renderArticles = () => {
     const { navigation } = this.props;
@@ -177,7 +57,6 @@ class Booking extends React.Component {
               bold
               style={{ marginBottom: theme.SIZES.BASE / 2 }}
               color={argonTheme.COLORS.PRIMARY}>GIÁ SÂN</Text>
-            {this.renderCollapsible()}
           </Block>
         </Block>
         {/* <Block center> */}
@@ -542,7 +421,13 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     justifyContent: 'flex-start',
     marginRight: 20
-  }
+  },
+  line: {
+    width: width * 0.3,
+    height: 10,
+    backgroundColor: argonTheme.COLORS.PRIMARY,
+    marginVertical: '2%',
+  },
 });
 
 export default Booking;
