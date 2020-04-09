@@ -14,6 +14,30 @@ import { Images, argonTheme } from "../constants";
 const { width, height } = Dimensions.get("screen");
 
 class ForgotPassword extends React.Component {
+  state = {
+    email: null
+  }
+  handleForgot = () => {
+
+    fetch("http://3.86.86.114/password/email", {
+      method: 'post',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: this.state.email
+      })
+    })
+      .then((response) => response.json())
+      .then((responseJson) => {
+        console.log(responseJson);
+        
+      }).catch((error) => {
+        console.log(error);
+      });
+  }
+
   render() {
     const { navigation } = this.props;
     return (
@@ -31,7 +55,7 @@ class ForgotPassword extends React.Component {
                 </Text>
               </Block>
               <Block flex>
-              <Block flex={0.17} middle>
+                <Block flex={0.17} middle>
                   <Text color="#8898AA" size={12}>
                     QUÊN MẬT KHẨU
                   </Text>
@@ -44,7 +68,8 @@ class ForgotPassword extends React.Component {
                   >
                     <Block width={width * 0.8}>
                       <Input
-                        password
+                        onChangeText={(email) => this.setState({ email: email })}
+                        // password
                         borderless
                         placeholder="Địa chỉ Email của tài khoản..."
                         iconContent={
@@ -59,7 +84,7 @@ class ForgotPassword extends React.Component {
                       />
                     </Block>
                     <Block middle>
-                      <Button color="primary" onPress={() => navigation.navigate("App")} style={styles.createButton}>
+                      <Button color="primary" onPress={() => this.handleForgot()} style={styles.createButton}>
                         <Text bold size={14} color={argonTheme.COLORS.WHITE}>
                           XÁC NHẬN
                         </Text>

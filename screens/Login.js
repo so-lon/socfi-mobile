@@ -7,7 +7,8 @@ import {
   KeyboardAvoidingView,
   Image,
   Linking,
-  Alert
+  Alert,
+  AsyncStorage
 } from "react-native";
 import { Block, Checkbox, Text, theme } from "galio-framework";
 
@@ -17,12 +18,25 @@ import { ScrollView } from "react-native-gesture-handler";
 import * as Facebook from 'expo-facebook';
 import * as Google from 'expo-google-app-auth';
 import Expo from "expo";
-
+import host from '../constants/host';
 const { width, height } = Dimensions.get("screen");
 
 class Login extends React.Component {
+  state = {
+    isLoading: false
+  }
+
+  _storeData = async (key, value) => {
+    try {
+      await AsyncStorage.setItem(key, value);
+      // console.log(AsyncStorage.getItem('token'));
+    } catch (error) {
+      // Error saving data
+    }
+  };
 
   logInFacebook = async () => {
+    this.setState({ isLoading: true });
     try {
       await Facebook.initializeAsync('480545299270145');
       const {
@@ -36,9 +50,34 @@ class Login extends React.Component {
       });
       if (type === 'success') {
         // Get the user's name using Facebook's Graph API
-        const response = await fetch(`https://graph.facebook.com/me?fields=id,email,name&access_token=${token}`);
+        const responseFb = await fetch(`https://graph.facebook.com/me?fields=id,email,name&access_token=${token}`);
         // Alert.alert('Logged in!', `Hi ${(await response.json()).name}!`);
-        console.log(await response.json());
+        console.log(await responseFb.json());
+        fetch(host.api_url + "loginBySocial", {
+          method: 'post',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: responseFb.name,
+            email: responseFb.email
+          })
+        })
+          .then((response) => response.json())
+          .then((responseJson) => {
+            console.log(responseJson);
+            if (responseJson.message === 'success') {
+              this._storeData('token', responseJson['token']);
+              this._storeData('id', responseJson['id']);
+              this.props.navigation.navigate('App');
+            } else {
+              console.log(responseJson);
+              Alert.alert('Đăng kí', 'Đăng kí thất bại, vui lòng thử lại');
+            }
+          }).catch((error) => {
+            console.log(error);
+          });
       } else {
         // type === 'cancel'
       }
@@ -48,6 +87,7 @@ class Login extends React.Component {
   }
 
   logInGoogle = async () => {
+    this.setState({ isLoading: true });
     try {
       const { type, accessToken, user } = await Google.logInAsync({
         androidClientId: "221974845316-v0tamam2i75661a90r3c1ksp41rrr5h0.apps.googleusercontent.com",
@@ -56,17 +96,67 @@ class Login extends React.Component {
       })
       if (type === "success") {
         console.log(user);
-        // this.setState({
-        //   signedIn: true,
-        //   name: result.user.name,
-        //   photoUrl: result.user.photoUrl
-        // })
+        fetch(host.api_url + "loginBySocial", {
+          method: 'post',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: user.name,
+            email: user.email
+          })
+        })
+          .then((response) => response.json())
+          .then((responseJson) => {
+            console.log(responseJson);
+            if (responseJson.message === 'success') {
+              this._storeData('token', responseJson['token']);
+              this._storeData('id', responseJson['id']);
+              this.props.navigation.navigate('App');
+            } else {
+              console.log(responseJson);
+              Alert.alert('Đăng kí', 'Đăng kí thất bại, vui lòng thử lại');
+            }
+          }).catch((error) => {
+            console.log(error);
+          });
       } else {
         console.log("cancelled")
       }
     } catch (e) {
       console.log("error", e)
     }
+  }
+
+  handleLogin = async () => {
+    this.setState({ isLoading: true });
+    fetch(host.api_url + "login", {
+      method: 'post',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: this.state.username,
+        password: this.state.password
+      })
+    })
+      .then((response) => response.json())
+      .then((responseJson) => {
+        console.log(responseJson);
+        if (responseJson.message === 'success') {
+          this._storeData('token', responseJson['token']);
+          this._storeData('id', responseJson['id']);
+          this.props.navigation.navigate('App');
+        } else {
+          console.log(responseJson);
+          this.setState({isLoading: false})
+          Alert.alert('Đăng nhập thất bại', 'Tài khoản hoặc mật khẩu không đúng');
+        }
+      }).catch((error) => {
+        console.log(error);
+      });
   }
 
   render() {
@@ -101,7 +191,7 @@ class Login extends React.Component {
                   </Button>
                   <Button
                     onPress={() => this.logInGoogle()}
-                   style={styles.socialButtons}>
+                    style={styles.socialButtons}>
                     <Block row>
                       <Icon
                         name="logo-google"
@@ -147,6 +237,7 @@ class Login extends React.Component {
                     </Block> */}
                       <Block width={width * 0.8} style={{ marginBottom: 15 }}>
                         <Input
+                          onChangeText={(username) => { this.setState({ username: username }) }}
                           borderless
                           placeholder="Tài khoản"
                           iconContent={
@@ -162,6 +253,7 @@ class Login extends React.Component {
                       </Block>
                       <Block width={width * 0.8}>
                         <Input
+                          onChangeText={(password) => { this.setState({ password: password }) }}
                           password
                           borderless
                           placeholder="Mật khẩu"
@@ -205,7 +297,7 @@ class Login extends React.Component {
                       </Button>
                     </Block> */}
                       <Block middle>
-                        <Button color="primary" onPress={() => navigation.navigate("App")} style={styles.createButton}>
+                        <Button color="primary" onPress={() => this.handleLogin()} style={styles.createButton}>
                           <Text bold size={14} color={argonTheme.COLORS.WHITE}>
                             ĐĂNG NHẬP
                         </Text>
@@ -223,6 +315,9 @@ class Login extends React.Component {
                         </Text>
                         </Block>
                       </Block>
+                      {this.state.isLoading && <Block center>
+                        <Image source={Images.loading} style={{ width: 50, height: 50 }}></Image>
+                      </Block>}
                     </KeyboardAvoidingView>
                   </Block>
                 </ScrollView>

@@ -5,7 +5,8 @@ import {
   Dimensions,
   StatusBar,
   KeyboardAvoidingView,
-  Image
+  Image,
+  Alert
 } from "react-native";
 import { Block, Checkbox, Text, theme } from "galio-framework";
 
@@ -23,6 +24,7 @@ class Register extends React.Component {
     email: null,
     password: null
   }
+
   handleRegister = () => {
     fetch(host.api_url + "register", {
       method: 'post',
@@ -36,13 +38,17 @@ class Register extends React.Component {
         phone: this.state.phone,
         email: this.state.email,
         password: this.state.password,
+        c_password: this.state.password,
       })
     })
       .then((response) => response.json())
       .then((responseJson) => {
-        if (responseJson.message === 'success') {
-          
+        console.log(responseJson);
+        if (responseJson.success) {
+          Alert.alert('Đăng kí', 'Đăng kí thành công, vui lòng đăng nhập');
           this.props.navigation.goBack();
+        } else {
+          Alert.alert('Đăng kí', 'Đăng kí thất bại, vui lòng thử lại');
         }
       }).catch((error) => {
         console.log(error);
@@ -94,10 +100,7 @@ class Register extends React.Component {
               <Block flex>
                 <ScrollView>
                   <Block flex={0.17} middle>
-                    {/* <Text color="#8898AA" size={12}>
-                      Hoặc đăng ký theo thông tin
-                  </Text> */}
-                  <Image source={Images.SocfiLogo} style={{marginVertical: 10,height: 80, width: width - 200}}/>
+                    <Image source={Images.SocfiLogo} style={{ marginVertical: 10, height: 80, width: width - 200 }} />
                   </Block>
                   <Block flex center>
                     <KeyboardAvoidingView

@@ -10,6 +10,7 @@ const iOSLogo = require("../assets/imgs/ios.png");
 const androidLogo = require("../assets/imgs/android.png");
 const Cover = require("../assets/imgs/cover.png");
 const SocfiLogo = require("../assets/imgs/logo-dark.png");
+const loading = require("../assets/imgs/loading.gif");
 // internet imgs
 
 const ProfilePicture = 'https://images.daznservices.com/di/library/GOAL/ca/2b/nguyen-cong-phuong-ho-chi-minh-city-fc-vs-ha-noi-fc-vietnamese-super-cup-2019_l32p0tb4mbr4134jl3oiyxtv3.jpg?t=-1704568048&quality=100';
@@ -41,5 +42,6 @@ export default {
   iOSLogo,
   androidLogo,
   Cover,
-  SocfiLogo
+  SocfiLogo,
+  loading,
 };
