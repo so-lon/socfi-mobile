@@ -4,17 +4,51 @@ import {
   ImageBackground,
   Dimensions,
   StatusBar,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  Image
 } from "react-native";
 import { Block, Checkbox, Text, theme } from "galio-framework";
 
 import { Button, Icon, Input } from "../components";
 import { Images, argonTheme } from "../constants";
 import { ScrollView } from "react-native-gesture-handler";
-
+import host from '../constants/host';
 const { width, height } = Dimensions.get("screen");
 
 class Register extends React.Component {
+  state = {
+    username: null,
+    name: null,
+    phone: null,
+    email: null,
+    password: null
+  }
+  handleRegister = () => {
+    fetch(host.api_url + "register", {
+      method: 'post',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: this.state.username,
+        name: this.state.name,
+        phone: this.state.phone,
+        email: this.state.email,
+        password: this.state.password,
+      })
+    })
+      .then((response) => response.json())
+      .then((responseJson) => {
+        if (responseJson.message === 'success') {
+          
+          this.props.navigation.goBack();
+        }
+      }).catch((error) => {
+        console.log(error);
+      });
+  }
+
   render() {
     const { navigation } = this.props;
     return (
@@ -26,7 +60,7 @@ class Register extends React.Component {
         >
           <Block flex middle>
             <Block style={styles.registerContainer}>
-              <Block flex={0.25} middle style={styles.socialConnect}>
+              {/* <Block flex={0.25} middle style={styles.socialConnect}>
                 <Text color="#8898AA" size={12}>
                   Đăng ký tài khoản bằng
                 </Text>
@@ -56,118 +90,146 @@ class Register extends React.Component {
                     </Block>
                   </Button>
                 </Block>
-              </Block>
+              </Block> */}
               <Block flex>
                 <ScrollView>
-                <Block flex={0.17} middle>
-                  <Text color="#8898AA" size={12}>
-                    Hoặc đăng ký theo thông tin
-                  </Text>
-                </Block>
-                <Block flex center>
-                  <KeyboardAvoidingView
-                    style={{ flex: 1 }}
-                    behavior="padding"
-                    enabled
-                  >
-                    <Block width={width * 0.8} style={{ marginBottom: 15 }}>
-                      <Input
-                        borderless
-                        placeholder="Tên..."
-                        iconContent={
-                          <Icon
-                            size={16}
-                            color={argonTheme.COLORS.ICON}
-                            name="hat-3"
-                            family="ArgonExtra"
-                            style={styles.inputIcons}
-                          />
-                        }
-                      />
-                    </Block>
-                    <Block width={width * 0.8} style={{ marginBottom: 15 }}>
-                      <Input
-                        borderless
-                        placeholder="Số điện thoại..."
-                        iconContent={
-                          <Icon
-                            size={16}
-                            color={argonTheme.COLORS.ICON}
-                            name="phone"
-                            family="font-awesome"
-                            style={styles.inputIcons}
-                          />
-                        }
-                      />
-                    </Block>
-                    <Block width={width * 0.8} style={{ marginBottom: 15 }}>
-                      <Input
-                        borderless
-                        placeholder="Email..."
-                        iconContent={
-                          <Icon
-                            size={16}
-                            color={argonTheme.COLORS.ICON}
-                            name="ic_mail_24px"
-                            family="ArgonExtra"
-                            style={styles.inputIcons}
-                          />
-                        }
-                      />
-                    </Block>
-                    <Block width={width * 0.8}>
-                      <Input
-                        password
-                        borderless
-                        placeholder="Mật khẩu..."
-                        iconContent={
-                          <Icon
-                            size={16}
-                            color={argonTheme.COLORS.ICON}
-                            name="padlock-unlocked"
-                            family="ArgonExtra"
-                            style={styles.inputIcons}
-                          />
-                        }
-                      />
-                      <Block row style={styles.passwordCheck}>
-                        <Text size={12} color={argonTheme.COLORS.MUTED}>
-                          độ an toàn mật khẩu:
-                        </Text>
-                        <Text bold size={12} color={argonTheme.COLORS.ERROR}>
-                          {" "}
-                          Kém
-                        </Text>
+                  <Block flex={0.17} middle>
+                    {/* <Text color="#8898AA" size={12}>
+                      Hoặc đăng ký theo thông tin
+                  </Text> */}
+                  <Image source={Images.SocfiLogo} style={{marginVertical: 10,height: 80, width: width - 200}}/>
+                  </Block>
+                  <Block flex center>
+                    <KeyboardAvoidingView
+                      style={{ flex: 1 }}
+                      behavior="padding"
+                      enabled
+                    >
+                      <Block width={width * 0.8} style={{ marginBottom: 15 }}>
+                        <Input
+                          onChangeText={(name) => { this.setState({ username: name }) }}
+                          borderless
+                          placeholder="Tên đăng nhập..."
+                          iconContent={
+                            <Icon
+                              size={16}
+                              color={argonTheme.COLORS.ICON}
+                              name="hat-3"
+                              family="ArgonExtra"
+                              style={styles.inputIcons}
+                            />
+                          }
+                        />
                       </Block>
-                    </Block>
-                    <Block row width={width * 0.75}>
-                      <Checkbox
-                        checkboxStyle={{
-                          borderWidth: 3
-                        }}
-                        color={argonTheme.COLORS.PRIMARY}
-                        label="Tôi đồng ý với"
-                      />
-                      <Button
-                        style={{ width: 150 }}
-                        color="transparent"
-                        textStyle={{
-                          color: argonTheme.COLORS.PRIMARY,
-                          fontSize: 14
-                        }}
-                      >
-                        Điều Khoản Sử Dụng
+                      <Block width={width * 0.8} style={{ marginBottom: 15 }}>
+                        <Input
+                          onChangeText={(name) => { this.setState({ name: name }) }}
+                          borderless
+                          placeholder="Tên..."
+                          iconContent={
+                            <Icon
+                              size={16}
+                              color={argonTheme.COLORS.ICON}
+                              name="hat-3"
+                              family="ArgonExtra"
+                              style={styles.inputIcons}
+                            />
+                          }
+                        />
+                      </Block>
+                      <Block width={width * 0.8} style={{ marginBottom: 15 }}>
+                        <Input
+                          onChangeText={(phone) => { this.setState({ phone: phone }) }}
+                          borderless
+                          placeholder="Số điện thoại..."
+                          iconContent={
+                            <Icon
+                              size={16}
+                              color={argonTheme.COLORS.ICON}
+                              name="phone"
+                              family="font-awesome"
+                              style={styles.inputIcons}
+                            />
+                          }
+                        />
+                      </Block>
+                      <Block width={width * 0.8} style={{ marginBottom: 15 }}>
+                        <Input
+                          onChangeText={(email) => { this.setState({ email: email }) }}
+                          borderless
+                          placeholder="Email..."
+                          iconContent={
+                            <Icon
+                              size={16}
+                              color={argonTheme.COLORS.ICON}
+                              name="ic_mail_24px"
+                              family="ArgonExtra"
+                              style={styles.inputIcons}
+                            />
+                          }
+                        />
+                      </Block>
+                      <Block width={width * 0.8}>
+                        <Input
+                          onChangeText={(password) => { this.setState({ password: password }) }}
+                          password
+                          borderless
+                          placeholder="Mật khẩu..."
+                          iconContent={
+                            <Icon
+                              size={16}
+                              color={argonTheme.COLORS.ICON}
+                              name="padlock-unlocked"
+                              family="ArgonExtra"
+                              style={styles.inputIcons}
+                            />
+                          }
+                        />
+                      </Block>
+                      <Block width={width * 0.8}>
+                        <Input
+                          password
+                          borderless
+                          placeholder="Xác nhận mật khẩu..."
+                          iconContent={
+                            <Icon
+                              size={16}
+                              color={argonTheme.COLORS.ICON}
+                              name="padlock-unlocked"
+                              family="ArgonExtra"
+                              style={styles.inputIcons}
+                            />
+                          }
+                        />
+                      </Block>
+                      <Block row width={width * 0.75}>
+                        <Checkbox
+                          checkboxStyle={{
+                            borderWidth: 3
+                          }}
+                          color={argonTheme.COLORS.PRIMARY}
+                          label="Tôi đồng ý với"
+                        />
+                        <Button
+                          style={{ width: 150 }}
+                          color="transparent"
+                          textStyle={{
+                            color: argonTheme.COLORS.PRIMARY,
+                            fontSize: 14
+                          }}
+                        >
+                          Điều Khoản Sử Dụng
                       </Button>
-                    </Block>
-                    <Block middle>
-                      <Button color="primary" onPress={() => navigation.navigate("App")} style={styles.createButton}>
-                        <Text bold size={14} color={argonTheme.COLORS.WHITE}>
-                          ĐĂNG KÝ
+                      </Block>
+                      <Block middle>
+                        <Button color="primary" onPress={() => this.handleRegister()} style={styles.createButton}>
+                          <Text bold size={14} color={argonTheme.COLORS.WHITE}>
+                            ĐĂNG KÝ
                         </Text>
-                      </Button>
-                    </Block>
-                  </KeyboardAvoidingView>
-                </Block>
+                        </Button>
+                      </Block>
+                    </KeyboardAvoidingView>
+                  </Block>
                 </ScrollView>
               </Block>
             </Block>
