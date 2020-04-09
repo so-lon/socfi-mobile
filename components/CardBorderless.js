@@ -29,13 +29,13 @@ class Card extends React.Component {
         </TouchableWithoutFeedback>
         <TouchableWithoutFeedback onPress={() => navigation.navigate('Stadium')}>
           <Block left flex space="between" style={styles.cardDescription}>
-            <Text bold size={18} color={argonTheme.COLORS.WARNING} style={styles.cardTitle}>
+            <Text bold size={18} color={argonTheme.COLORS.ERROR} style={styles.cardTitle}>
               <Icon
-                name="local-offer"
+                name="whatshot"
                 family="material"
-                size={14}
-                color={argonTheme.COLORS.WARNING}
-                style={{ marginVertical: '1%' }}
+                size={18}
+                color={argonTheme.COLORS.ERROR}
+                style={{ marginRight: 5 }}
               />
               {item.value}
             </Text>
@@ -48,7 +48,17 @@ class Card extends React.Component {
                 color={argonTheme.COLORS.ACTIVE}
                 style={{ marginVertical: '1%' }}
               />
-              {item.address}
+              {item.address} ({item.distance})
+            </Text>
+            <Text size={12} style={styles.cardTitle}>
+              <Icon
+                name="attach-money"
+                family="material"
+                size={12}
+                color={argonTheme.COLORS.YELLOW}
+                style={{ marginRight: 5 }}
+              />
+              <Text style={{textDecorationLine: 'line-through', textDecorationStyle: 'solid'}}>{item.old_price}</Text> => {item.new_price}
             </Text>
             <Block flex style={{flexDirection: 'row'}}>
               <StarRating

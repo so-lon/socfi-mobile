@@ -25,6 +25,7 @@ import NearbyStadium from '../screens/NearbyStadium';
 import News from '../screens/News';
 import Reason from '../screens/Reason';
 import Feedback from '../screens/Feedback';
+import Code from '../screens/Code';
 // drawer
 import CustomDrawerContent from "./Menu";
 
@@ -203,6 +204,21 @@ function HomeStack(props) {
           header: ({ navigation, scene }) => (
             <Header
               title="TÌM XUNG QUANH"
+              back
+              navigation={navigation}
+              scene={scene}
+            />
+          ),
+          cardStyle: { backgroundColor: "#F8F9FE" }
+        }}
+      />
+      <Stack.Screen
+        name="Code"
+        component={Code}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              title="COVID19 99% Off | 15h - 17h"
               back
               navigation={navigation}
               scene={scene}

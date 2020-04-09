@@ -39,7 +39,7 @@ class Card extends React.Component {
                 color={argonTheme.COLORS.ACTIVE}
                 style={{ marginVertical: '1%' }}
               />
-              {item.address}
+              {item.address} ({item.distance})
             </Text>
             <StarRating
               disabled={true}

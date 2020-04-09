@@ -94,10 +94,12 @@ class Home extends React.Component {
               <Text bold color='white'>Nhập BUOITRUA</Text>
               <Text bold color='white'>30% Off | 10h - 14h</Text>
             </Block>
-            <Block style={[styles.promotion, {backgroundColor: argonTheme.COLORS.WARNING}]}>
-              <Text bold color='white'>Nhập COVID19</Text>
-              <Text bold color='white'>99% Off | 15h - 17h</Text>
-            </Block>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Code')}>
+              <Block style={[styles.promotion, {backgroundColor: argonTheme.COLORS.WARNING}]}>
+                <Text bold color='white'>Nhập COVID19</Text>
+                <Text bold color='white'>99% Off | 15h - 17h</Text>
+              </Block>
+            </TouchableOpacity>
             <Block style={[styles.promotion, {backgroundColor: argonTheme.COLORS.DEFAULT}]}>
               <Text bold color='white'>Nhập KHUYA</Text>
               <Text bold color='white'>20% Off | 0h - 4h</Text>
