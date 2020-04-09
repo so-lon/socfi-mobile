@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Dimensions, ScrollView } from 'react-native';
+import { StyleSheet, Dimensions, ScrollView, TouchableWithoutFeedback } from 'react-native';
 import { Block, theme, Text, Card as GalioCard, Icon } from 'galio-framework';
 import Slideshow from 'react-native-image-slider-show';
 import { Card, Button } from '../components';
@@ -16,7 +16,6 @@ class Home extends React.Component {
     interval: null,
     dataSource: [
       { 'url': 'https://cdn.discordapp.com/attachments/682134033739808891/696765994885971998/5.jpg' },
-
       { 'url': 'https://cdn.discordapp.com/attachments/682134033739808891/696766019641016341/2_2.jpg' },
       { 'url': 'https://cdn.discordapp.com/attachments/682134033739808891/696765989559336960/5_1.jpg' },
     ]
@@ -90,20 +89,24 @@ class Home extends React.Component {
           </Text>
           <Block left style={styles.line}></Block>
           <ScrollView horizontal>
-            <Block style={[styles.promotion, {backgroundColor: argonTheme.COLORS.INFO}]}>
-              <Text bold color='white'>Nhập BUOITRUA</Text>
-              <Text bold color='white'>30% Off | 10h - 14h</Text>
-            </Block>
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('Code')}>
+            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Code')}>
+              <Block style={[styles.promotion, {backgroundColor: argonTheme.COLORS.INFO}]}>
+                <Text bold color='white'>Nhập BUOITRUA</Text>
+                <Text bold color='white'>30% Off | 10h - 14h</Text>
+              </Block>
+            </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Code')}>
               <Block style={[styles.promotion, {backgroundColor: argonTheme.COLORS.WARNING}]}>
                 <Text bold color='white'>Nhập COVID19</Text>
                 <Text bold color='white'>99% Off | 15h - 17h</Text>
               </Block>
-            </TouchableOpacity>
-            <Block style={[styles.promotion, {backgroundColor: argonTheme.COLORS.DEFAULT}]}>
-              <Text bold color='white'>Nhập KHUYA</Text>
-              <Text bold color='white'>20% Off | 0h - 4h</Text>
-            </Block>
+            </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Code')}>
+              <Block style={[styles.promotion, {backgroundColor: argonTheme.COLORS.DEFAULT}]}>
+                <Text bold color='white'>Nhập KHUYA</Text>
+                <Text bold color='white'>20% Off | 0h - 4h</Text>
+              </Block>
+            </TouchableWithoutFeedback>
           </ScrollView>
         </Block>
 
@@ -145,7 +148,7 @@ class Home extends React.Component {
               <Card item={articles.home[0]}/>
               <Card item={articles.home[2]}/>
             </Block>
-            <Button color='primary'>
+            <Button color='primary' onPress={() => this.props.navigation.navigate('AllStadium')}>
               <Text bold size={18} color='white'>
                 XEM THÊM
               </Text>

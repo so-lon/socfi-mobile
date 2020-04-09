@@ -26,6 +26,8 @@ import News from '../screens/News';
 import Reason from '../screens/Reason';
 import Feedback from '../screens/Feedback';
 import Code from '../screens/Code';
+import AllStadium from '../screens/AllStadium';
+import Promotion from '../screens/Promotion';
 // drawer
 import CustomDrawerContent from "./Menu";
 
@@ -168,12 +170,29 @@ function HomeStack(props) {
         }}
       />
       <Stack.Screen
+        name="AllStadium"
+        component={AllStadium}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              title="TẤT CẢ SÂN BÓNG"
+              back
+              search
+              placeholder="Nhập tên sân hoặc khu vực muốn tìm kiếm"
+              navigation={navigation}
+              scene={scene}
+            />
+          ),
+          cardStyle: { backgroundColor: "#F8F9FE" }
+        }}
+      />
+      <Stack.Screen
         name="Stadium"
         component={Stadium}
         options={{
           header: ({ navigation, scene }) => (
             <Header
-              title="CHI TIẾT SÂN BÓNG"
+              title="SÂN BÓNG"
               back
               navigation={navigation}
               scene={scene}
@@ -189,6 +208,21 @@ function HomeStack(props) {
           header: ({ navigation, scene }) => (
             <Header
               title="ĐẶT SÂN"
+              back
+              navigation={navigation}
+              scene={scene}
+            />
+          ),
+          cardStyle: { backgroundColor: "#F8F9FE" }
+        }}
+      />
+      <Stack.Screen
+        name="Promotion"
+        component={Promotion}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              title="KHUYẾN MÃI"
               back
               navigation={navigation}
               scene={scene}

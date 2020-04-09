@@ -94,6 +94,7 @@ export default {
       booking   : 30,
       old_price : '300K',
       new_price : '180K',
+      distance  : '9.0km',
     },{
       title     : 'SÂN CCX: Giảm trực tiếp 50K cho khung giờ 10h-14h thứ 4 mỗi tuần',
       image     : 'https://cdn.discordapp.com/attachments/682134033739808891/696765989559336960/5_1.jpg',
@@ -104,6 +105,7 @@ export default {
       booking   : 17,
       old_price : '200K',
       new_price : '150K',
+      distance  : '3.7km',
     },{
       title     : 'SÂN THĂNG LONG: Mừng khai trương đồng giá 100K/giờ từ ngày 10/4-17/4',
       image     : 'https://cdn.discordapp.com/attachments/682134033739808891/696766019641016341/2_2.jpg',
@@ -114,6 +116,7 @@ export default {
       booking   : 45,
       old_price : '120K',
       new_price : '100K',
+      distance  : '5.2km',
     },
   ]
 };
