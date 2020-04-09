@@ -1,11 +1,9 @@
 import React from 'react';
-import { StyleSheet, Dimensions, ScrollView, Linking } from 'react-native';
+import { StyleSheet, Dimensions, ScrollView, Linking, Image } from 'react-native';
 import { Block, theme, Text } from 'galio-framework';
-import Slideshow from 'react-native-image-slider-show';
-import { Card, Icon, Button } from '../components';
-import { argonTheme, tabs, Images } from "../constants";
-import Accordion from 'react-native-collapsible/Accordion';
-import StarRating from 'react-native-star-rating';
+import { Icon, Button } from '../components';
+import { argonTheme } from "../constants";
+import articles from '../constants/articles';
 const { width } = Dimensions.get('screen');
 const { height } = Dimensions.get('screen');
 
@@ -27,154 +25,35 @@ class Stadium extends React.Component {
         </Block>
         <Block flex>
           <Block style={[styles.header, styles.shadow]}>
-            <Block center styles={styles.left}>
-              <Text
-                size={14}
-                style={{ marginVertical: theme.SIZES.BASE / 2 }}
-                color={argonTheme.COLORS.PRIMARY}
-              >
-                ĐỐI TÁC CỦA SOCFI
-              </Text>
+            <Block left styles={styles.left}>
               <Text
                 h4
                 bold
                 style={{ marginBottom: theme.SIZES.BASE / 2 }}
                 color={argonTheme.COLORS.DEFAULT}
               >
-                Sân SCSC Chảo Lửa
+                {articles.promotion[0].title}
               </Text>
-              <StarRating
-                disabled={true}
-                maxStars={5}
-                rating={5}
-                starSize={18}
-                fullStarColor={argonTheme.COLORS.STAR}
-              />
-            </Block>
-          </Block>
-
-          <Block flex style={{marginTop: theme.SIZES.BASE * 2}}>
-            <Text h4 bold color={argonTheme.COLORS.DEFAULT}>Thông tin sân</Text>
-            <Block left style={styles.line}></Block>
-
-            <Block row>
-              <Text size={14} style={{marginVertical: theme.SIZES.BASE / 2}}>
-                <Icon
-                  name="location-on"
-                  family="material"
-                  size={14}
-                  color={argonTheme.COLORS.PRIMARY}
-                />
+              <Text
+                style={{ marginBottom: theme.SIZES.BASE / 2 }}
+                color={argonTheme.COLORS.DEFAULT}
+              >
+                SOCFISYSTEM 08/04/2020 14:50
               </Text>
-              <Text size={14} style={{marginVertical: theme.SIZES.BASE / 2, marginLeft: theme.SIZES.BASE / 2}}>
-                35 Phan Thúc Duyện, Quận Tân Bình
+              <Block left style={styles.line}></Block>
+
+              <Text>
+              Cao cấp hơn, một số chủ sân sẵn sàng tặng bóng cho khách đặt trước chỗ cho 2 trận trong khung giờ muộn (sau 20h30). Với các sân bóng có thêm phòng tắm và cửa hàng giải khát, khách hàng có thể được tắm nóng lạnh miễn phí và nhận phiếu giảm giá bia ngay sau các trận đấu. Riêng vào các khung giờ thấp điểm, giá sân vốn chỉ bằng 30% so với giá giờ cao điểm nhưng vẫn được chủ sân chiết khấu mạnh tay, từ 10 đến 30% tùy số trận đặt trước.
               </Text>
             </Block>
-
-            <Block row>
-              <Text size={14} style={{marginVertical: theme.SIZES.BASE / 2}}>
-                <Icon
-                  name="phone"
-                  family="material"
-                  size={14}
-                  color={argonTheme.COLORS.PRIMARY}
-                />
-              </Text>
-              <Text size={14} style={{marginVertical: theme.SIZES.BASE / 2, marginLeft: theme.SIZES.BASE / 2}}>
-                0969 982 324
-              </Text>
+            <Block center style={styles.articles}>
+              <Button color='default' onPress={() => this.props.navigation.navigate('Booking')} size={2}>
+                <Block row middle>
+                  <Icon size={16} name="date-range" family="material" style={{ paddingRight: 8 }} color={argonTheme.COLORS.WHITE} />
+                  <Text size={16} bold color={argonTheme.COLORS.WHITE} >ĐẶT SÂN</Text>
+                </Block>
+              </Button>
             </Block>
-
-            <Block row>
-              <Text size={14} style={{marginVertical: theme.SIZES.BASE / 2}}>
-                <Icon
-                  name="clockcircle"
-                  family="AntDesign"
-                  size={14}
-                  color={argonTheme.COLORS.PRIMARY}
-                />
-              </Text>
-              <Text size={14} style={{marginVertical: theme.SIZES.BASE / 2, marginLeft: theme.SIZES.BASE / 2}}>
-                08:00 - 24:00
-              </Text>
-            </Block>
-
-            <Block row>
-                <Text size={14} style={{marginVertical: theme.SIZES.BASE / 2}}>
-                  <Icon
-                    name="attach-money"
-                    family="material"
-                    size={14}
-                    color={argonTheme.COLORS.PRIMARY}
-                  />
-                </Text>
-                <Text size={14} style={{marginVertical: theme.SIZES.BASE / 2, marginLeft: theme.SIZES.BASE / 2}}>
-                  150K - 350K 
-                </Text>
-              </Block>
-
-          <Block flex style={styles.articles}>
-            <Text h4 bold color={argonTheme.COLORS.DEFAULT}>Khuyến mãi hiện có</Text>
-            <Block left style={styles.line}></Block>
-
-            <Block row>
-              <Text size={14} style={{marginVertical: theme.SIZES.BASE / 2}}>
-                <Icon
-                  name="whatshot"
-                  family="material"
-                  size={14}
-                  color={argonTheme.COLORS.ERROR}
-                />
-              </Text>
-              <Text size={14} style={{marginVertical: theme.SIZES.BASE / 2, marginLeft: theme.SIZES.BASE / 2}}>
-                WEEKDAY20: giảm giá 20k/1h trước 16h các ngày từ thứ Hai đến thứ Sáu
-              </Text>
-            </Block>
-
-            <Block row>
-              <Text size={14} style={{marginVertical: theme.SIZES.BASE / 2}}>
-                <Icon
-                  name="whatshot"
-                  family="material"
-                  size={14}
-                  color={argonTheme.COLORS.ERROR}
-                />
-              </Text>
-              <Text size={14} style={{marginVertical: theme.SIZES.BASE / 2, marginLeft: theme.SIZES.BASE / 2}}>
-                COVID19: giảm giá 99% từ 15h đến 17h
-              </Text>
-            </Block>
-          </Block>
-
-          <Block flex style={{marginTop: theme.SIZES.BASE / 2}}>
-            <Text h4 bold color={argonTheme.COLORS.DEFAULT}>Giá sân theo ngày</Text>
-            <Block left style={styles.line}></Block>
-
-            <Block row style={{ marginVertical: theme.SIZES.BASE / 2 }}>
-              <Accordion
-                sections={SECTIONS}
-                activeSections={this.state.activeSections}
-                renderHeader={this._renderHeader}
-                renderContent={this._renderContent}
-                onChange={this._updateSections}
-                underlayColor={theme.COLORS.ACTIVE}
-              />
-            </Block>
-          </Block>
-
-          <Button color='default' onPress={() => this.props.navigation.navigate('Booking')} style={{marginBottom: theme.SIZES.BASE / 2}}>
-            <Block row middle>
-              <Icon size={16} name="date-range" family="material" style={{ paddingRight: 8 }} color={argonTheme.COLORS.WHITE} />
-              <Text size={16} bold color={argonTheme.COLORS.WHITE} >ĐẶT SÂN</Text>
-            </Block>
-          </Button>
-        
-          <Button color='info' onPress={() => Linking.openURL('google.navigation:q=San chao lua scsc')}>
-            <Block row middle>
-              <Icon size={16} name="directions" family="material" style={{ paddingRight: 8 }} color={argonTheme.COLORS.WHITE} />
-              <Text size={16} bold color={argonTheme.COLORS.WHITE} >CHỈ ĐƯỜNG</Text>
-            </Block>
-          </Button>
           </Block>
         </Block>
       </ScrollView>
@@ -201,12 +80,10 @@ const styles = StyleSheet.create({
   },
   header: {
     width: 'auto',
-    height: theme.SIZES.BASE * 7,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-evenly',
+    height: 'auto',
+    flexDirection: 'column',
     backgroundColor: theme.COLORS.WHITE,
-    paddingVertical: theme.SIZES.BASE,
+    padding: theme.SIZES.BASE,
   },
   left: {
     paddingVertical: 12,
@@ -224,27 +101,6 @@ const styles = StyleSheet.create({
     marginLeft: 42,
     // marginRight: theme.SIZES.BASE,
   },
-  tab: {
-    backgroundColor: theme.COLORS.TRANSPARENT,
-    width: width * 0.4,
-    borderRadius: 0,
-    borderWidth: 0,
-    height: 30,
-    elevation: 0,
-    // borderRightWidth: 0.3,
-    // borderRightColor: theme.COLORS.ICON,
-    // borderLeftWidth: 0.3,
-    // borderLeftColor: theme.COLORS.ICON,
-  },
-  options: {
-    marginBottom: 24,
-    marginTop: 10,
-    elevation: 4,
-  },
-  divider: {
-    borderRightWidth: 0.3,
-    borderRightColor: theme.COLORS.ICON,
-  },
   shadow: {
     shadowColor: theme.COLORS.BLACK,
     shadowOffset: { width: 0, height: 2 },
@@ -253,15 +109,10 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   line: {
-    width: width * 0.3,
-    height: 10,
-    backgroundColor: argonTheme.COLORS.PRIMARY,
-    marginVertical: '2%',
-  },
-  weekDay: {
-    width: width - theme.SIZES.BASE * 2,
-    height: theme.SIZES.BASE * 3,
-    flexDirection: 'row',
+    width: '100%',
+    height: 1,
+    backgroundColor: argonTheme.COLORS.DEFAULT,
+    marginVertical: '5%',
   },
 });
 
