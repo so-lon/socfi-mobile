@@ -269,16 +269,12 @@ function NewsStack(props) {
   return (
     <Stack.Navigator mode="card" headerMode="screen">
       <Stack.Screen
-        name="KHUYẾN MÃI"
+        name="News"
         component={News}
         options={{
           header: ({ navigation, scene }) => (
             <Header
               title="KHUYẾN MÃI"
-              // search
-              // options
-              // optionLeft="SAN BONG"
-              // optionRight="TIN TUC"
               navigation={navigation}
               scene={scene}
             />
