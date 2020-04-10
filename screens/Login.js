@@ -60,6 +60,7 @@ class Login extends React.Component {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
+            username: 'facebooklogin',
             name: responseFb.name,
             email: responseFb.email
           })
@@ -103,6 +104,7 @@ class Login extends React.Component {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
+            username: 'googlesignin',
             name: user.name,
             email: user.email
           })
