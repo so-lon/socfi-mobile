@@ -168,18 +168,40 @@ class Booking extends React.Component {
               value="1.5 giờ"
               defaultIndex={12}
               options={["1 giờ", "1.5 giờ", "2 giờ"]}
-            />
-            <Block left>
-              <Text bold size={18}>Thông tin đặt sân </Text>
-              <Text size={16}>Sân SCSC Chảo Lửa - Sân 1 (loại sân 5) </Text>
-              <Text size={16}>Thời gian: 08/04/2020, 17:30 - 19:00 </Text>
-              <Text size={16}>Thời lượng: 1:30 </Text>
-              <Text size={16}>Giá sân: 300.000 VNĐ/h </Text>
-              <Text size={16}>Giảm giá: 0 VNĐ</Text>
-              <Text size={16}>Thành tiền: 450.000 VNĐ, thanh toán tại sân</Text>
-            </Block>
+              />
           </Block>
-          <Button onPress={() => this.showToastWithGravity()}>XÁC NHẬN ĐẶT</Button>
+          <Block flex style={styles.articles}>
+            <Text h4 bold color={argonTheme.COLORS.DEFAULT}>Thông tin đặt sân</Text>
+            <Block left style={styles.line}></Block>
+              <Block>
+                <Text h5 style={{marginBottom: theme.SIZES.BASE / 2}}>Sân SCSC Chảo Lửa</Text>
+                <Block row>
+                  <Text bold size={16}>Sân: </Text>
+                  <Text size={16} style={{marginLeft: 'auto'}}>Sân 1 (loại sân 5) </Text>
+                </Block>
+                <Block row>
+                  <Text bold size={16}>Thời gian: </Text>
+                  <Text size={16} style={{marginLeft: 'auto'}}>08/04/2020, 17:30 - 19:00</Text>
+                </Block>
+                <Block row>
+                  <Text bold size={16}>Thời lượng: </Text>
+                  <Text size={16} style={{marginLeft: 'auto'}}>1:30</Text>
+                </Block>
+                <Block row>
+                  <Text bold size={16}>Giá sân: </Text>
+                  <Text size={16} style={{marginLeft: 'auto'}}>300.000 VNĐ/h</Text>
+                </Block>
+                <Block row>
+                  <Text bold size={16}>Thành tiền: </Text>
+                  <Text size={16} style={{marginLeft: 'auto'}}>450.000 VNĐ</Text>
+                </Block>
+                <Block row>
+                  <Text bold size={16}>Thanh toán: </Text>
+                  <Text size={16} style={{marginLeft: 'auto'}}>Tại sân</Text>
+                </Block>
+              </Block>
+            <Button onPress={() => this.showToastWithGravity()} style={{marginTop: theme.SIZES.BASE}}>XÁC NHẬN ĐẶT</Button>
+          </Block>
         </Block>
       </ScrollView>
     );
